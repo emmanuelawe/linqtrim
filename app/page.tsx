@@ -1,10 +1,13 @@
 import HeroSection from "@/components/HeroSection";
-import Image from "next/image";
+import InputURL from "@/components/InputURL";
+import LinqFeatures from "@/components/LinqFeatures";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen">
+    <main className="flex flex-col min-h-screen">
       <HeroSection />
+      <InputURL />
+      <LinqFeatures />
     </main>
   );
 }

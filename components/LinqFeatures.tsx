@@ -1,8 +1,8 @@
 const LinqFeatures = () => {
   return (
-    <main className="md:my-20 my-10 md:mx-20 flex md:flex-wrap overflow-x-auto gap-2 md:gap-10">
+    <main className="md:my-20 my-10 md:mx-20 flex w-full md:flex-wrap overflow-x-auto md:overflow-hidden space-x-2 md:space-x-6">
         {/* REPLACE THESE CARDS BY MAPPING */}
-      <section className="bg-[#ffffff] flex flex-shrink-0 flex-col items-center drop-shadow-xl h-[48rem] md:h-[32rem] w-[80%] md:w-[30%] rounded-xl p-8">
+      <section className="bg-[#ffffff] flex flex-shrink-0 flex-col items-center drop-shadow-xl h-[48rem] md:h-[32rem] w-64 md:w-[30%] rounded-xl p-8">
         <h1 className="text-2xl font-bold py-4">URL Shortener</h1>
         <p className="text-justify">
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -17,7 +17,7 @@ const LinqFeatures = () => {
         </p>
       </section>
 
-      <section className="bg-[#ffffff] flex flex-shrink-0 flex-col items-center drop-shadow-xl  h-[48rem] md:h-[32rem] w-[80%] md:w-[30%] rounded-xl p-8">
+      <section className="bg-[#ffffff] flex flex-shrink-0 flex-col items-center drop-shadow-xl  h-[48rem] md:h-[32rem] w-64 md:w-[30%] rounded-xl p-8">
         <h1 className="text-2xl font-bold py-4">QR Code</h1>
         <p className="text-justify">
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -32,7 +32,7 @@ const LinqFeatures = () => {
         </p>
       </section>
 
-      <section className="bg-[#ffffff] flex flex-shrink-0 flex-col items-center drop-shadow-xl  h-[48rem] md:h-[32rem] w-[80%] md:w-[30%] rounded-xl p-8">
+      <section className="bg-[#ffffff] flex flex-shrink-0 flex-col items-center drop-shadow-xl  h-[48rem] md:h-[32rem] w-64 md:w-[30%] rounded-xl p-8">
         <h1 className="text-2xl font-bold py-4">Analytics</h1>
         <p className="text-justify">
           Lorem Ipsum is simply dummy text of the printing and typesetting

@@ -17,7 +17,7 @@
 }
 
 body {
-  @apply bg-[#f9f9f9] md:container md:mx-auto mx-6 overflow-x-hidden md:min-w-[100vw]
+  @apply bg-[#f9f9f9] md:container md:mx-auto mx-6 overflow-x-hidden 
   /* color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,

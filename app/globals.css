@@ -17,7 +17,7 @@
 }
 
 body {
-  @apply bg-[#f9f9f9] md:container md:mx-auto mx-6 overflow-x-hidden 
+  @apply bg-[#fafafa] md:container md:mx-auto mx-6 overflow-x-hidden 
   /* color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -38,21 +38,26 @@ body {
 }
 
 .button {
-  @apply cursor-pointer bg-[#FF5757] text-white font-semibold rounded-md p-3 items-center transition ease-in-out delay-100 hover:bg-[#e12c2c] duration-300 ;
+  @apply cursor-pointer bg-[#2EB77A] text-white font-semibold rounded-md p-3 items-center transition ease-in-out delay-100 hover:bg-[#038C5A] duration-300 ;
 }
 
 .button_stroke {
-  @apply cursor-pointer hover:border-[#FF5757] text-black hover:text-[#FF5757] hover:border-b-4 rounded-sm font-semibold p-3 items-center;
+  @apply cursor-pointer hover:border-[#2EB77A] text-black hover:text-[#2EB77A] hover:border-b-4 ease-in-out duration-100 rounded-sm font-semibold p-3 items-center;
 }
 
 .url_button {
-  @apply cursor-pointer h-10 md:h-[4rem] bg-[#FF5757] text-sm md:text-lg text-white font-semibold rounded-xl md:px-6 md:py-3 py-2 px-3 items-center transition ease-in-out delay-100 hover:bg-[#e12c2c] duration-300;
+  @apply cursor-pointer h-10 md:h-[4rem] bg-[#2EB77A] text-sm md:text-lg text-white font-semibold rounded-xl md:px-6 md:py-3 py-2 px-3 items-center transition ease-in-out delay-100 hover:bg-[#038C5A] duration-300;
 }
 
 .hbutton_border {
-  @apply cursor-pointer border-[#FF5757] md:text-xl text-lg transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-[#e12c2c] hover:text-white hover:border-none md:py-4 md:px-20 py-2 px-10 text-[#FF5757] border-2 rounded-md font-semibold items-center;
+  @apply cursor-pointer border-[#2EB77A] md:text-xl text-lg transition ease-in-out delay-100 hover:scale-105 hover:bg-[#038C5A] hover:text-white hover:border-none md:py-4 md:px-20 py-2 px-10 text-[#2EB77A] border-2 rounded-md font-semibold items-center;
 }
 
 .hbutton {
-  @apply cursor-pointer bg-[#FF5757] md:text-xl text-lg transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-[#e12c2c] duration-300 md:py-4 md:px-20 py-2 px-10 text-white font-semibold rounded-md items-center;
+  @apply cursor-pointer bg-[#2EB77A] md:text-xl text-lg transition ease-in-out delay-100  hover:scale-105 hover:bg-[#038C5A] duration-300 md:py-4 md:px-20 py-2 px-10 text-white font-semibold rounded-md items-center;
 }
+
+.bdbutton {
+  @apply cursor-pointer bg-white md:text-xl text-lg transition ease-in-out delay-100  hover:scale-105 hover:bg-[#038C5A] duration-300 md:py-4 md:p-20 py-2 px-10 text-[#2EB77A] font-semibold rounded-md items-center;
+}
+

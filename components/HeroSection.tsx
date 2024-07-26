@@ -3,7 +3,7 @@ import Image from "next/image";
 const HeroSection = () => {
   return (
     <main
-      className="flex md:pt-20 pt-10 md:mx-20"
+      className="flex md:pt-20 pt-16 md:mx-32 mx-4"
     >
       <div className="flex items-center justify-between max-h-[50%]">
 
@@ -11,7 +11,7 @@ const HeroSection = () => {
       <section className="max-w-[32rem] items-center md:items-start">
         <h1 className="h1 py-4">
           Shorten links{" "}
-          <span className="italic text-[#FF5757]">effortlessly</span>
+          <span className="italic text-[#2EB77A]">effortlessly</span>
           <br /> and stay in control
         </h1>
         <p className="text-justify md:text-base text-sm">
@@ -20,7 +20,7 @@ const HeroSection = () => {
           and more. Effortlessly start shortening and tracking your links.
         </p>
 
-        <div className="space-x-4 my-8">
+        <div className="my-8 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
           <button className="hbutton">Sign up</button>
           <button className="hbutton_border">Sign in</button>
         </div>

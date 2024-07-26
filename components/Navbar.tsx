@@ -14,7 +14,7 @@ const Navbar = () => {
               width={200}
               height={200}
               alt="Linqtrim Logo"
-              className="md:w-48 md:h-12 w-24 h-6 md:-ml-[0.4rem] -ml-[0.2rem]"
+              className="md:w-48 md:h-12 w-24 h-6 md:-ml-[0.4rem] -ml-[0.2rem] hover:scale-105 ease-in-out duration-500"
             />
           </section>
         </Link>
@@ -34,7 +34,7 @@ const Navbar = () => {
           </div>
         </section>
       </main>
-      <p className="border-b border-gray-200 -mx-96" />
+      <p className="border-b border-gray-200 -mx-[100%]" />
     </main>
   );
 };

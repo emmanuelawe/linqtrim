@@ -3,7 +3,7 @@ import React from "react";
 const BriefDescription = () => {
   return (
     <main className="bg-[#2EB77A] h-[60vh] rounded-xl my-20 -mx-[15%]">
-      <div className="mx-[15%] flex my-16 justify-between items-center ">
+      <div className="mx-[15%] flex py-16 justify-between items-center min-h-[50%]">
         <section className="md:max-w-[50%] w-full">
           <h2 className="md:text-3xl text-xl font-bold text-white mb-6">
             <span className="text-[#F2E3D0] italic">Advanced</span>

@@ -27,9 +27,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` ${poppins.className}`}>
+      <body className={`overflow-x-hidden w-full md:mx-auto md:container ${poppins.className}`}>
         <Navbar />
+        <main className="mx-4">
+
         {children}
+        </main>
         <Footer />
       </body>
     </html>

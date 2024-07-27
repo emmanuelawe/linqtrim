@@ -4,7 +4,7 @@ import MobileMenu from "./MobileMenu";
 
 const Navbar = () => {
   return (
-    <main className="md:px-0 md:mx-20">
+    <main className="md:px-0 md:mx-20 mx-4">
       <main className="flex h-24 justify-between items-center">
         {/* LEFT */}
         <Link href="/">
@@ -34,7 +34,7 @@ const Navbar = () => {
           </div>
         </section>
       </main>
-      <p className="border-b border-gray-200 -mx-[100%]" />
+      <p className="border-b border-gray-200 w-full -mx-4 hidden" />
     </main>
   );
 };

@@ -3,12 +3,12 @@ import Image from "next/image";
 const HeroSection = () => {
   return (
     <main
-      className="flex md:pt-20 pt-16 md:mx-32 mx-4"
+      className="flex flex-col md:flex-row md:pt-20 pt-16 md:mx-32 mx-4"
     >
-      <div className="flex items-center justify-between max-h-[50%]">
+      <div className="flex items-center justify-between w-full">
 
       {/* LEFT */}
-      <section className="max-w-[32rem] items-center md:items-start">
+      <section className="md:max-w-[32rem] w-full items-center md:items-start">
         <h1 className="h1 py-4">
           Shorten links{" "}
           <span className="italic text-[#2EB77A]">effortlessly</span>
@@ -26,14 +26,14 @@ const HeroSection = () => {
         </div>
       </section>
       {/* RIGHT */}
-      <section className="hidden md:flex">
+      <section className="hidden md:flex md:w-1/2">
         <div>
           <Image
             src="/illustration.png"
             alt="Illustration"
             width={800}
             height={800}
-            className=" max-w-[70%] ml-[30%]"
+            className=" max-w-full"
             // style={{objectFit: 'contain'}}
           />
         </div>

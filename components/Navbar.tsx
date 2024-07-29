@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
+import NavDropdown from "./NavDropdown";
 
 const Navbar = () => {
+  const user = false;
   return (
     <main className="md:px-0 md:mx-20 mx-4">
       <main className="flex h-24 justify-between items-center">
@@ -25,12 +27,18 @@ const Navbar = () => {
             <MobileMenu />
           </div>
           <div className="hidden md:flex space-x-8 items-center">
-            <Link href="/signin">
-              <div className="button_stroke">Sign In</div>
-            </Link>
-            <Link href="/signup">
-              <div className="button">Get Started</div>
-            </Link>
+            {!user ? (
+              <>
+                <Link href="/login">
+                  <div className="button_borderb">Log In</div>
+                </Link>
+                <Link href="/signup">
+                  <div className="button">Get Started</div>
+                </Link>
+              </>
+            ) : (
+              <NavDropdown />
+            )}
           </div>
         </section>
       </main>

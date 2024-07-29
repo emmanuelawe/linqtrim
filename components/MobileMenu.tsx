@@ -15,7 +15,7 @@ const MobileMenu = () => {
     {isOpen && (
         <div className='absolute top-24 left-0 w-full h-[calc(30vh-96px)] ease-in duration-200 bg-gray-800 flex flex-col items-center justify-center gap-4'>
            <Link href="/signin">
-            <div className="text-white font-semibold hover:text-[#2EB77A]">Sign In</div>
+            <div className="text-white font-semibold hover:text-[#2EB77A]">Log In</div>
           </Link>
           <Link href="/signup">
             <div className="text-white font-semibold hover:text-[#2EB77A]">Get Started</div>

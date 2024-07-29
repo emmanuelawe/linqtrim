@@ -4,7 +4,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <main className="bg-[#2EB77A] h-auto mt-20 md:-mx-[1440px]">
+    <main className="bg-[#2EB77A] h-auto md:-mx-[1440px]">
       <div className="flex text-white flex-col space-y-10 mx-4 md:mx-[1440px]">
         <div className="flex flex-col md:flex-row min-h-[50vh] items-center md:justify-around space-y-9 md:space-y-0 pt-16 md:pt-0 md:space-x-20">
           {/*LOGO 2024 */}

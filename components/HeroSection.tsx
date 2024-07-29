@@ -20,9 +20,9 @@ const HeroSection = () => {
           and more. Effortlessly start shortening and tracking your links.
         </p>
 
-        <div className="my-8 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
-          <button className="hbutton">Sign up</button>
-          <button className="hbutton_border">Sign in</button>
+        <div className="my-8 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-x-6 md:space-y-0">
+          <button className="hbutton w-full w-1/1 md:w-1/2">Sign up</button>
+          <button className="hbutton_border w-full w-1/1 md:w-1/2">Log in</button>
         </div>
       </section>
       {/* RIGHT */}

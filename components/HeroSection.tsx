@@ -5,7 +5,7 @@ const HeroSection = () => {
     <main
       className="flex flex-col md:flex-row md:pt-20 pt-16 md:mx-32 mx-4"
     >
-      <div className="flex items-center justify-between w-full">
+      <div className="flex items-center justify-between w-full gap-6">
 
       {/* LEFT */}
       <section className="md:max-w-[32rem] w-full items-center md:items-start">
@@ -20,7 +20,7 @@ const HeroSection = () => {
           and more. Effortlessly start shortening and tracking your links.
         </p>
 
-        <div className="my-8 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-x-6 md:space-y-0">
+        <div className="my-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <button className="hbutton w-full w-1/1 md:w-1/2">Sign up</button>
           <button className="hbutton_border w-full w-1/1 md:w-1/2">Log in</button>
         </div>

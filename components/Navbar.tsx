@@ -2,9 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
 import NavDropdown from "./NavDropdown";
+import { User } from '@supabase/supabase-js';
 
-const Navbar = () => {
-  const user = false;
+type NavbarProps = {
+    user: User | null;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ user }) => {
   return (
     <main className="md:px-0 md:mx-20 mx-4">
       <main className="flex h-24 justify-between items-center">

@@ -4,6 +4,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import {signOut } from "@/app/(authentication)/login/actions";
+
 
 const NavDropdown = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -29,20 +31,20 @@ const NavDropdown = () => {
       {dropdownVisible && (
         <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
           <Link href="/my-account">
-            <div className="block px-4 py-2 text-gray-700 hover:bg-gray-100 border-b font-semibold border-gray-100">
+            <div className="w-full block px-4 py-2 text-gray-700 hover:bg-gray-100 border-b font-semibold border-gray-100">
               Ayo Chase
             </div>
           </Link>
           <Link href="/profile">
-            <div className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+            <div className="w-full block px-4 py-2 text-gray-700 hover:bg-gray-100">
               My Links
             </div>
           </Link>
-          <Link href="/profile">
-            <div className="block px-4 py-2 hover:bg-gray-100 font-medium text-red-500">
+          <form action={signOut} method='POST'>
+            <button className="w-full block px-4 py-2 hover:bg-gray-100 font-medium text-red-500">
               Logout
-            </div>
-          </Link>
+            </button>
+          </form>
         </div>
       )}
     </div>

@@ -1,8 +1,9 @@
+import SignupForm from "@/components/SignupForm";
 
-const SignUp = () => {
+export default function SignUpPage() {
   return (
-    <div>SignUp</div>
-  )
+    <main className="flex items-center justify-center mx-auto container min-h-screen ">
+      <SignupForm />
+    </main>
+  );
 }
-
-export default SignUp

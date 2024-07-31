@@ -3,6 +3,9 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { cookies } from "next/headers";
+import { createServerClient } from "@supabase/ssr";
+import { createClient } from "@/utils/supabase/server";
 
 
 const poppins = Poppins({
@@ -20,15 +23,22 @@ export const metadata: Metadata = {
   description: "Keep your URLs short and simple",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  //TO GET USER SESSION
+  // Use cookies() to manage the cookies object
+const supabase = createClient()
+
+  const { data: { user } } = await supabase.auth.getUser();
+
   return (
     <html lang="en">
       <body className={`overflow-x-hidden w-full md:mx-auto md:container  ${poppins.className}`}>
-        <Navbar />
+        <Navbar user={user} />
         <main className="mx-4 my-16 min-h-screen">
 
         {children}

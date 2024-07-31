@@ -58,10 +58,10 @@ body {
 }
 
 .hbutton {
-  @apply cursor-pointer bg-[#2EB77A] md:text-xl text-lg transition ease-in-out delay-100  hover:scale-105 hover:bg-[#038C5A] duration-300 md:py-4 md:px-20 py-2 px-10 text-white font-semibold rounded-md items-center;
+  @apply cursor-pointer bg-[#2EB77A] md:text-xl text-lg transition ease-in-out delay-100  hover:scale-105 hover:bg-[#038C5A] duration-300 md:py-4 md:px-16 py-2 px-10 text-white font-semibold rounded-md items-center;
 }
 
 .bdbutton {
-  @apply cursor-pointer bg-white md:text-xl text-lg transition ease-in-out delay-100  hover:scale-105 hover:bg-[#038C5A] duration-300 md:py-4 md:p-20 py-2 px-10 text-[#2EB77A] hover:text-white hover:border-white hover:border hover:rounded-xl font-semibold rounded-md items-center;
+  @apply cursor-pointer bg-white md:text-xl text-lg transition ease-in-out delay-100  hover:scale-105 hover:bg-[#038C5A] duration-300 md:py-4 md:p-16 py-2 px-10 text-[#2EB77A] hover:text-white hover:border-white hover:border hover:rounded-xl font-semibold rounded-md items-center;
 }
 

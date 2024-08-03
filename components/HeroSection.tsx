@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -21,8 +22,12 @@ const HeroSection = () => {
         </p>
 
         <div className="my-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <button className="hbutton w-full w-1/1 md:w-1/2">Sign up</button>
-          <button className="hbutton_border w-full w-1/1 md:w-1/2">Log in</button>
+          <Link href='/signup' className="hbutton w-full w-1/1 md:w-1/2 text-center">
+          <button >Sign up</button>
+          </Link>
+          <Link href='/login' className="hbutton_border w-full w-1/1 md:w-1/2 text-center">
+          <button>Log in</button>
+          </Link>
         </div>
       </section>
       {/* RIGHT */}

@@ -4,6 +4,11 @@ import {useState} from 'react'
 
 const MobileMenu = () => {
     const [isOpen, setIsOpen] = useState(false)
+
+    const handleMenuClick = () => {
+      setIsOpen(prev => !prev)
+    }
+    
   return (
     <main>
         <div className='flex flex-col gap-[4.5px] cursor-pointer'
@@ -13,12 +18,14 @@ const MobileMenu = () => {
             <div className={`w-6 h-1 bg-[#2EB77A] rounded-sm ${isOpen ? "-rotate-45" : ""} origin-left ease-in-out duration-500`} />
         </div>
     {isOpen && (
-        <div className='absolute top-24 left-0 w-full h-[calc(30vh-96px)] ease-in duration-200 bg-gray-800 flex flex-col items-center justify-center gap-4'>
+        <div className='absolute top-24 left-0 w-full h-[calc(25vh-96px)] ease-in duration-200 bg-[#2EB77A] flex flex-col justify-center gap-4'>
            <Link href="/login">
-            <div className="text-white font-semibold hover:text-[#2EB77A]">Log In</div>
+            <button onClick={handleMenuClick} className="text-white mx-6 font-semibold hover:text-[#2EB77A]">Log In</button>
           </Link>
+
+          <div className='border-b border-white'/>  
           <Link href="/signup">
-            <div className="text-white font-semibold hover:text-[#2EB77A]">Get Started</div>
+            <button onClick={handleMenuClick} className="text-white mx-6 font-semibold hover:text-[#2EB77A]">Get Started</button>
           </Link>
         </div>
     )}

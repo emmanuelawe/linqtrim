@@ -4,7 +4,7 @@ import MobileMenu from "./MobileMenu";
 import NavDropdown from "./NavDropdown";
 import { User } from '@supabase/supabase-js';
 
-type NavbarProps = {
+interface NavbarProps {
     user: User | null;
 }
 

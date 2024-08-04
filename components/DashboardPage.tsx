@@ -5,7 +5,7 @@ import { QRCode } from "qrcode";
 import Image from "next/image";
 
 interface URLData {
-  id: number;
+  id: string;
   original_url: string;
   created_at: string;
   custom_url: string;
@@ -14,7 +14,7 @@ interface URLData {
 }
 
 interface AnalyticsData {
-  url_id: number;
+  url_id: string;
   created_at: string;
   city: string;
   country: string;
@@ -27,12 +27,12 @@ interface DashboardProps {
 }
 
 const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
+  console.log(urls)
   const [longUrl, setLongUrl] = useState("");
   const [customUrl, setCustomUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
   const [qrCodeUrl, setQrCodeUrl] = useState("");
 
-  // const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -90,6 +90,7 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
           )}
         </div>
       )}
+      
 
       <section>
         <h2>Your Shortened URLS</h2>

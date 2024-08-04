@@ -8,7 +8,7 @@ import { headers } from "next/headers";
 async function getLocation(ip: string) {
   try {
     const response = await fetch(
-      `https://ipinfo.io/${ip}/json?token=7ba3386ffc6da2`
+      `https://ipinfo.io/${ip}/json?token=IPINFO_TOKEN`
     );
     const data = await response.json();
     console.log(data.city);
@@ -34,19 +34,17 @@ export async function POST(request: Request) {
   const shortUrl = `${url.origin}/${alias}`;
   const user = await supabase.auth.getUser();
 
+  // Extract IP address from request headers
   const headersList = headers();
   const ip = headersList.get("x-forwarded-for") || "121.0.0.1";
   console.log(ip);
-
-  // // Extract IP address from request headers
-  // const ip = request.headers.get('x-forwarded-for') || '0.0.0.0';
-  // console.log(ip);
 
   // Get the Location based on IP address
   const { city, country } = await getLocation(ip);
 
   // Determine device from useragent
-  const { device } = userAgent(request);
+  const { os } = userAgent(request);
+  const device = os.name
 
   //Generate QR Code
   let qrCodeUrl = "";

@@ -8,7 +8,7 @@ import { headers } from "next/headers";
 async function getLocation(ip: string) {
   try {
     const response = await fetch(
-      `https://ipinfo.io/${ip}/json?token=IPINFO_TOKEN`
+      `https://ipinfo.io/${ip}/json?token=7ba3386ffc6da2`
     );
     const data = await response.json();
     console.log(data.city);

@@ -24,7 +24,7 @@ const SignupForm = () => {
               name="email"
               type="email"
               required
-              className="flex mt-2 pl-4 py-3 pr-32 md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-10 h-8 min-w-[100%] rounded-md border-2 border-gray-100 bg-gray-50/80"
+              className="flex mt-2 pl-4 py-3 pr-32 md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-10 h-8 w-full rounded-md border-2 border-gray-100 bg-gray-50/80"
             />
           </div>
           <div className="mt-6">
@@ -34,7 +34,7 @@ const SignupForm = () => {
               name="password"
               type="password"
               required
-              className="flex mt-2 pl-4 py-4 pr-32 md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-10 h-8 min-w-[100%] rounded-md border-2 border-gray-100 bg-gray-50/80"
+              className="flex mt-2 pl-4 py-4 pr-32 md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-10 h-8 w-full rounded-md border-2 border-gray-100 bg-gray-50/80"
             />
           </div>
           {message && (

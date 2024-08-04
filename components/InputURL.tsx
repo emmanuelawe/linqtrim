@@ -1,6 +1,5 @@
 "use client";
-import { useState, ChangeEvent, FormEvent } from "react";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
 import Image from "next/image";
 
 const InputURL = () => {
@@ -46,7 +45,8 @@ const InputURL = () => {
             value={longUrl}
             onChange={(e) => setLongUrl(e.target.value)}
             placeholder="Paste long URL"
-            className="flex pl-4 py-3 pr-6 md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-20 h-14 w-full rounded-xl bg-transparent"
+            required
+            className="flex pl-4 py-3 pr-6 md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-16 h-14 w-full rounded-xl bg-transparent"
           />
           <div className="border-l-2 border-[#2EB77A]/50" />
           <input
@@ -54,12 +54,13 @@ const InputURL = () => {
             value={customUrl}
             onChange={(e) => setCustomUrl(e.target.value)}
             placeholder="Unique ID"
-            className="flex pr-4 pl-2 py-3 text-center  md:placeholder:text-base placeholder:italic placeholder:text-xs focus:outline-none md:h-20 h-14 w-[30%] rounded-e-xl bg-gray-100"
+            required
+            className="flex pr-4 pl-2 py-3 text-center md:placeholder:text-base placeholder:italic placeholder:text-xs focus:outline-none md:h-16 h-14 w-[30%] rounded-e-xl bg-gray-100"
           />
         </div>
         <button
           type="submit"
-          className="url_button w-full md:w-auto md:h-20 h-14 shadow-md"
+          className="url_button w-full md:w-auto md:h-16 h-14 shadow-md"
         >
           Shorten!
         </button>

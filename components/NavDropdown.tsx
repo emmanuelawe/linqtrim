@@ -1,32 +1,28 @@
 // components/DropdownMenu.tsx
-'use client'
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import {signOut } from "@/app/(authentication)/login/actions";
-
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { signOut } from "@/app/(authentication)/login/actions";
 
 const NavDropdown = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
-  const avatar = ""
+  const avatar = "";
 
   return (
     <div className="relative">
-        <button
+      <button
         onClick={() => setDropdownVisible(!dropdownVisible)}
         className="flex items-center space-x-2"
       >
         {avatar ? (
-          <Image
-            src="/"
-            alt="User Avatar"
-            className="w-10 h-10 rounded-full"
-          />
+          <Image src="/" alt="User Avatar" className="w-10 h-10 rounded-full" />
         ) : (
           <div className="w-10 h-10 flex items-center justify-center bg-gray-200 rounded-full">
             AI
-          </div> )}
+          </div>
+        )}
       </button>
       {dropdownVisible && (
         <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
@@ -40,7 +36,7 @@ const NavDropdown = () => {
               My Links
             </div>
           </Link>
-          <form action={signOut} method='POST'>
+          <form action={signOut} method="POST">
             <button className="w-full block px-4 py-2 hover:bg-gray-100 font-medium text-red-500">
               Logout
             </button>

@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/ssr";
 import { createClient } from "@/utils/supabase/server";
-
+import { UserProvider } from "@/context/UserContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -28,22 +28,24 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   //TO GET USER SESSION
   // Use cookies() to manage the cookies object
-const supabase = createClient()
+  const supabase = createClient();
 
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   return (
     <html lang="en">
-      <body className={`overflow-x-hidden w-full md:mx-auto md:container  ${poppins.className}`}>
+      <body
+        className={`overflow-x-hidden w-full md:mx-auto md:container  ${poppins.className}`}
+      >
         <Navbar user={user} />
-        <main className="mx-4 my-16 min-h-screen">
-
-        {children}
-        </main>
-        <Footer />
+        <UserProvider user={user}>
+          <main className="mx-4 my-16 min-h-screen">{children}</main>
+          <Footer />
+        </UserProvider>
       </body>
     </html>
   );

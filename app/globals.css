@@ -38,11 +38,11 @@ body {
 }
 
 .button {
-  @apply cursor-pointer bg-[#2EB77A] text-white font-semibold rounded-md p-3 items-center transition ease-in-out delay-100 hover:bg-[#038C5A] duration-300 ;
+  @apply cursor-pointer bg-[#2EB77A] text-white font-semibold rounded-md p-3 items-center transition ease-in-out delay-100 hover:bg-[#038C5A] duration-300;
 }
 
 .button_stroke {
-  @apply cursor-pointer bg-white  text-[#2EB77A] hover:text-white border-2 border-[#2EB77A] font-semibold rounded-md p-3 items-center transition ease-in-out delay-100 hover:bg-[#038C5A] duration-300 ;
+  @apply cursor-pointer bg-white  text-[#2EB77A] hover:text-white border-2 border-[#2EB77A] font-semibold rounded-md p-3 items-center transition ease-in-out delay-100 hover:bg-[#038C5A] duration-300;
 }
 
 .button_borderb {
@@ -64,4 +64,3 @@ body {
 .bdbutton {
   @apply cursor-pointer bg-white md:text-xl text-lg transition ease-in-out delay-100  hover:scale-105 hover:bg-[#038C5A] duration-300 md:py-4 md:p-16 py-2 px-10 text-[#2EB77A] hover:text-white hover:border-white hover:border hover:rounded-xl font-semibold rounded-md items-center;
 }
-

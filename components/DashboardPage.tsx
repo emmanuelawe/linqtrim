@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { QRCode } from "qrcode";
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import { saveAs } from "file-saver";
+import ReactMarkdown from "react-markdown";
 
 interface URLData {
   id: string;
@@ -11,6 +12,8 @@ interface URLData {
   custom_url: string;
   short_url: string;
   qr: string;
+  url_visits: number;
+  description?: string;
 }
 
 interface AnalyticsData {
@@ -27,12 +30,51 @@ interface DashboardProps {
 }
 
 const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
-  console.log(urls)
+  console.log(urls);
   const [longUrl, setLongUrl] = useState("");
   const [customUrl, setCustomUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
   const [qrCodeUrl, setQrCodeUrl] = useState("");
+  const [editMode, setEditMode] = useState<Record<string, boolean>>({});
+  const [description, setDescription] = useState("");
+  const [localUrls, setLocalUrls] = useState<URLData[]>(urls);
 
+  useEffect(() => {
+    setLocalUrls(urls);
+  }, [urls]);
+
+
+  // Toggle the Edit Mode
+  const handleEditToggle = (id: string, currentDescription: string) => {
+    setEditMode((prevState) => ({
+      ...prevState,
+      [id]: !prevState[id],
+    }));
+    setDescription(currentDescription);
+  };
+
+  // Handle description update with the update-description api
+  const handleUpdateDescription = async (id: string) => {
+    const response = await fetch("/api/update-description", {
+      method: "POST",
+      body: JSON.stringify({ id, description }),
+    });
+    const data = await response.json();
+
+    if (response.ok) {
+      // Update the local state after successful update
+      setEditMode((prevState) => ({ ...prevState, [id]: false }));
+
+      // Update the description in the localUrls state
+      setLocalUrls((prevUrls) =>
+        prevUrls.map((url) =>
+          url.id === id ? { ...url, description: description } : url
+        )
+      );
+    } else {
+      alert(`Error: ${data.error}`);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,6 +88,12 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
       setQrCodeUrl(data.qrCodeUrl);
     } else {
       alert(`Error: ${data.error}`);
+    }
+  };
+
+  const handleDownloadQRCode = () => {
+    if (qrCodeUrl) {
+      saveAs(qrCodeUrl, "qrcode.png");
     }
   };
 
@@ -63,14 +111,14 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
             required
             className="flex pl-4 py-3 pr-6 md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-16 h-14 w-full rounded-xl bg-transparent"
           />
-          <div className="border-l-2 border-[#2EB77A]/50" />
+          <div className="border-l-2 border-white" />
           <input
             type="text"
             value={customUrl}
             onChange={(e) => setCustomUrl(e.target.value)}
             placeholder="Unique ID"
             required
-            className="flex pr-4 pl-2 py-3 text-center  md:placeholder:text-base placeholder:italic placeholder:text-xs focus:outline-none md:h-16 h-14 w-[30%] rounded-e-xl bg-gray-100"
+            className="flex pr-4 pl-2 py-3 text-center  md:placeholder:text-base placeholder:italic placeholder:text-xs focus:outline-none md:h-16 h-14 w-[30%] rounded-e-xl placeholder:text-white text-white bg-gray-700"
           />
         </div>
         <button type="submit" className="button">
@@ -86,50 +134,84 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
           {qrCodeUrl && (
             <div>
               <Image src={qrCodeUrl} alt="QR Code" width={50} height={50} />
+              <button onClick={handleDownloadQRCode} className="button mt-2">
+                Download QR Code
+              </button>
             </div>
           )}
         </div>
       )}
-      
 
-      <section>
-        <h2>Your Shortened URLS</h2>
-        {urls.length === 0 ? (
-          <p>No URLs shortened yet.</p>
-        ) : (
-          <ul>
-            {urls.map((url) => (
-              <li key={url.id}>
-                <a href={url.short_url}>{url.short_url}</a>
-                <Image src={url.qr} alt="QR Code" width={50} height={50} />
-                <p>Created at: {new Date(url.created_at).toLocaleString()}</p>
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
+      <div className="flex w-full justify-between">
+        <section className="">
+          <h2>Your Shortened URLS</h2>
+          {urls.length === 0 ? (
+            <p>No URLs shortened yet.</p>
+          ) : (
+            <ul className="flex flex-col gap-4">
+              {localUrls.map((url) => (
+                <li key={url.id}>
+                  <div>
+                    <div className="">
+                      {editMode[url.id] ? (
+                        <textarea
+                          value={description}
+                          onChange={(e) => setDescription(e.target.value)}
+                          placeholder="Enter description"
+                          className="flex pl-4 py-3 pr-6 md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-16 h-14 w-full rounded-xl bg-transparent"
+                        />
+                      ) : (
+                        <ReactMarkdown>{url.description || ""}</ReactMarkdown>
+                      )}
+                    </div>
+                    <button
+                      onClick={() =>
+                        editMode[url.id]
+                          ? handleUpdateDescription(url.id)
+                          : handleEditToggle(url.id, url.description || "")
+                      }
+                    >
+                      {editMode[url.id] ? "Save" : "Add Description"}
+                    </button>
+                  </div>
 
-      <section>
-        <h2>Analytics</h2>
-        {analytics.length === 0 ? (
-          <p>No analytics data available</p>
-        ) : (
-          <ul>
-            {analytics.map((analyticsItem) => (
-              <li key={analyticsItem.url_id}>
-                <p>URL ID: {analyticsItem.url_id}</p>
-                <p>
-                  Created at:{" "}
-                  {new Date(analyticsItem.created_at).toLocaleString()}
-                </p>
-                <p>City: {analyticsItem.city}</p>
-                <p>Country: {analyticsItem.country}</p>
-                <p>Device: {analyticsItem.device}</p>
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
+                  <a href={url.short_url}>{url.short_url}</a>
+                  <Image src={url.qr} alt="QR Code" width={50} height={50} />
+                  <button
+                    onClick={handleDownloadQRCode}
+                    className="button mt-2"
+                  >
+                    Download QR Code
+                  </button>
+                  <p>Created at: {new Date(url.created_at).toLocaleString()}</p>
+                  <p>Visits: {url.url_visits}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+
+        <section>
+          <h2>Analytics</h2>
+          {analytics.length === 0 ? (
+            <p>No analytics data available</p>
+          ) : (
+            <ul>
+              {analytics.map((analyticsItem) => (
+                <li key={analyticsItem.url_id}>
+                  <p>
+                    Created at:{" "}
+                    {new Date(analyticsItem.created_at).toLocaleString()}
+                  </p>
+                  <p>City: {analyticsItem.city}</p>
+                  <p>Country: {analyticsItem.country}</p>
+                  <p>Device: {analyticsItem.device}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      </div>
     </main>
   );
 };

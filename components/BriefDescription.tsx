@@ -16,10 +16,12 @@ const BriefDescription = () => {
             domain. Perfect for bloggers, marketers, affiliates, and businesses
             of any size, Linqtrim offers total control over your short links.
             Its features include an advanced URL Shortener, Link Analytics, and
-            QR codes. Use Linqtrim to maximize your links&apos; potential and enhance
-            your online presence.
+            QR codes. Use Linqtrim to maximize your links&apos; potential and
+            enhance your online presence.
           </p>
-          <button className="bdbutton text-left my-6">Linqtrim - All features</button>
+          <button className="bdbutton text-left my-6">
+            Linqtrim - All features
+          </button>
         </section>
 
         <section className="hidden md:flex">Image here</section>

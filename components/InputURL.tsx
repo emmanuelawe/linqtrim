@@ -1,17 +1,28 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import { useUser } from "@/context/UserContext";
+import { useRouter } from "next/navigation";
 
 const InputURL = () => {
+  const {user} = useUser()
+  const router = useRouter()
   const [longUrl, setLongUrl] = useState("");
   const [customUrl, setCustomUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
   const [qrCodeUrl, setQrCodeUrl] = useState("");
 
-  // const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!user) {
+      // Redirect to login if user is not authenticated
+      router.push("/login");
+      return;
+    }
+
+    // Proceed with shortening the URL if user is authenticated
     const response = await fetch("/api/shorten", {
       method: "POST",
       body: JSON.stringify({ originalUrl: longUrl, customUrl: customUrl }),
@@ -25,13 +36,6 @@ const InputURL = () => {
     }
   };
 
-  // function handleShorten(e: FormEvent<HTMLFormElement>) {
-  //   e.preventDefault();
-  //   console.log(e)
-  //   // Add your URL shortening logic here
-  //   if(longUrl)
-  //     router.push(`/login/createNew=${longUrl}`)
-  // }
 
   return (
     <main className="flex flex-col gap-5 md:mx-48 md:mt-20 mt-10">
@@ -48,14 +52,14 @@ const InputURL = () => {
             required
             className="flex pl-4 py-3 pr-6 md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-16 h-14 w-full rounded-xl bg-transparent"
           />
-          <div className="border-l-2 border-[#2EB77A]/50" />
+          <div className="border-l-2 border-white" />
           <input
             type="text"
             value={customUrl}
             onChange={(e) => setCustomUrl(e.target.value)}
             placeholder="Unique ID"
             required
-            className="flex pr-4 pl-2 py-3 text-center md:placeholder:text-base placeholder:italic placeholder:text-xs focus:outline-none md:h-16 h-14 w-[30%] rounded-e-xl bg-gray-100"
+            className="flex pr-4 pl-2 py-3 text-center md:placeholder:text-base placeholder:italic placeholder:text-xs focus:outline-none md:h-16 h-14 w-[30%]  rounded-e-xl placeholder:text-white text-white bg-gray-700"
           />
         </div>
         <button
@@ -70,17 +74,16 @@ const InputURL = () => {
         <span className="font-semibold text-[#2EB77A]">Terms of service</span>{" "}
         and <span className="font-semibold text-[#2EB77A]">Privacy Policy</span>
       </p>
-{shortUrl && 
-      <div className=" flex bg-white h-auto w-full my-4">
-      <div>
-      Shortened URL: {shortUrl}
+      {shortUrl && (
+        <div className=" flex bg-white h-auto w-full my-4">
+          <div>Shortened URL: {shortUrl}</div>
+          {qrCodeUrl && (
+            <div>
+              <Image src={qrCodeUrl} alt="QR Code" width={50} height={50} />
+            </div>
+          )}
         </div>
-        {qrCodeUrl && 
-        <div>
-          <Image src={qrCodeUrl} alt='QR Code' width={50} height={50} />
-          </div>}
-      </div>
-}
+      )}
     </main>
   );
 };

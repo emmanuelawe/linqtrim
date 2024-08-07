@@ -68,7 +68,9 @@ const Footer = () => {
         </div>
         {/*Copyright 2024 */}
         <section>
-          <p className="text-center text-xs md:text-base">© 2024 Chase Ntwk. All Rights Reserved.</p>
+          <p className="text-center text-xs md:text-base">
+            © 2024 Chase Ntwk. All Rights Reserved.
+          </p>
         </section>
       </div>
     </main>

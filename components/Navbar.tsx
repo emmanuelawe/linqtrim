@@ -2,10 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
 import NavDropdown from "./NavDropdown";
-import { User } from '@supabase/supabase-js';
+import { User } from "@supabase/supabase-js";
 
 interface NavbarProps {
-    user: User | null;
+  user: User | null;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ user }) => {
@@ -28,7 +28,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
         {/* RIGHT */}
         <section className="">
           <div className="md:hidden flex">
-            <MobileMenu />
+            <MobileMenu user={user} />
           </div>
           <div className="hidden md:flex space-x-8 items-center">
             {!user ? (

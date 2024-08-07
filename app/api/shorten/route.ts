@@ -32,7 +32,19 @@ export async function POST(request: Request) {
   const alias = customUrl || nanoid(6);
   const url = new URL(request.url); // Parse the request url
   const shortUrl = `${url.origin}/${alias}`;
-  const user = await supabase.auth.getUser();
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+  const userId = user?.id;
+  const userEmail = user?.email || "Unknown email";
+
+  if (userError || !user) {
+    return NextResponse.json(
+      { error: "User not authenticated" },
+      { status: 401 }
+    );
+  }
 
   // Extract IP address from request headers
   const headersList = headers();
@@ -44,7 +56,7 @@ export async function POST(request: Request) {
 
   // Determine device from useragent
   const { os } = userAgent(request);
-  const device = os.name
+  const device = os?.name || "Unknown device";
 
   //Generate QR Code
   let qrCodeUrl = "";
@@ -62,10 +74,13 @@ export async function POST(request: Request) {
     .from("urls")
     .insert([
       {
+        user_id: userId,
+        email: userEmail,
         original_url: originalUrl,
         custom_url: customUrl,
         short_url: shortUrl,
         created_at: new Date().toLocaleString(),
+        // url_visits: 
         qr: qrCodeUrl,
         city: city,
         country: country,

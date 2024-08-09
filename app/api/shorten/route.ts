@@ -1,8 +1,8 @@
 import { NextResponse, type NextRequest, userAgent } from "next/server";
 import { createClient } from "@/utils/supabase/server";
-import { nanoid } from "nanoid";
 import QRCode from "qrcode";
 import { headers } from "next/headers";
+
 
 // Get Location function
 async function getLocation(ip: string) {
@@ -11,8 +11,6 @@ async function getLocation(ip: string) {
       `https://ipinfo.io/${ip}/json?token=7ba3386ffc6da2`
     );
     const data = await response.json();
-    console.log(data.city);
-    console.log(data.country);
     return {
       city: data.city || "unknown",
       country: data.country || "unknown",
@@ -29,7 +27,7 @@ async function getLocation(ip: string) {
 export async function POST(request: Request) {
   const supabase = createClient();
   const { originalUrl, customUrl } = await request.json();
-  const alias = customUrl || nanoid(6);
+  const alias = customUrl
   const url = new URL(request.url); // Parse the request url
   const shortUrl = `${url.origin}/${alias}`;
   const {
@@ -49,7 +47,6 @@ export async function POST(request: Request) {
   // Extract IP address from request headers
   const headersList = headers();
   const ip = headersList.get("x-forwarded-for") || "121.0.0.1";
-  console.log(ip);
 
   // Get the Location based on IP address
   const { city, country } = await getLocation(ip);

@@ -5,7 +5,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema } from "@/lib/validationSchemas";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { login } from "@/app/(authentication)/login/actions";
+import { login, signInWithGoogle } from "@/app/(authentication)/login/actions";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
 
 const LoginForm = () => {
   // Extract the message from the query parameters
@@ -33,12 +35,12 @@ const LoginForm = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="mt-6 flex flex-col">
           <div className="">
             <label htmlFor="email">Email</label>
-            <input
+            <Input
               id="email"
               type="email"
               {...register("email")}
               required
-              className="flex mt-2 pl-4 py-3 pr-32 md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-10 h-8 w-full rounded-md border-2 border-gray-100 bg-gray-50/80"
+              className="flex mt-2 pl-4 py-3 pr-32 md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-10 h-8 w-full rounded-md border-2 border-gray-100 bg-gray-50/50"
             />
             {errors.email?.message && (
               <p className="text-red-500">{errors.email.message.toString()}</p>
@@ -46,12 +48,12 @@ const LoginForm = () => {
           </div>
           <div className="mt-6">
             <label htmlFor="password">Password</label>
-            <input
+            <Input
               id="password"
               type="password"
               {...register("password")}
               required
-              className="flex mt-2 pl-4 py-4 pr-32 md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-10 h-8 w-full rounded-md border-2 border-gray-100 bg-gray-50/80"
+              className="flex mt-2 pl-4 py-4 pr-32 md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-10 h-8 w-full rounded-md border-2 border-gray-100 bg-gray-50/50"
             />
             {errors.password?.message && (
               <p className="text-red-500">{errors.password.message.toString()}</p>
@@ -60,9 +62,12 @@ const LoginForm = () => {
           {message && (
             <div className="mt-4 text-red-500 text-sm">{message}</div>
           )}
-          <button type="submit" className="button mt-10 md:text-lg">
+          <Button size="lg" type="submit" className="button mt-10 md:text-lg">
             Log in
-          </button>
+          </Button>
+          <Button onClick={() => signInWithGoogle()} variant="outline" size="lg" type="button" className="mt-4 md:text-base">
+            Sign in with Google
+          </Button>
         </form>
         <div className="mt-4 text-center text-sm">
           Don&apos;t have an account?{""}

@@ -50,3 +50,27 @@ export async function signOut() {
   await supabase.auth.signOut();
   redirect("/");
 }
+
+export async function signInWithGoogle() {
+  const supabase = createClient();
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: 'http://localhost:3000/auth/callback',
+      queryParams: {
+        access_type: 'offline',
+        prompt: 'consent',
+      },
+    },
+  })
+
+  if (error) {
+    redirect("/login?message=Google Sign in failed");
+  }
+  
+  if (data.url) {
+    redirect(data.url);  // Redirect to the OAuth consent page
+  } 
+
+
+}

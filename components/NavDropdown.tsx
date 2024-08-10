@@ -49,7 +49,6 @@ const NavDropdown = () => {
           <DropdownMenuSeparator />
           <form
             action={signOut}
-            onClick={() => setDropdownVisible(!dropdownVisible)}
             method="POST"
             className="flex items-center justify-center w-full hover:bg-gray-100 px-3"
           >

@@ -3,6 +3,8 @@ import Link from "next/link";
 import MobileMenu from "./MobileMenu";
 import NavDropdown from "./NavDropdown";
 import { User } from "@supabase/supabase-js";
+import DarkMode from './DarkMode'
+import { Button } from "./ui/button";
 
 interface NavbarProps {
   user: User | null;
@@ -10,7 +12,7 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ user }) => {
   return (
-    <main className="md:px-0 md:mx-20 mx-4">
+    <main className="md:px-0 md:mx-auto md:container mx-4">
       <main className="flex h-24 justify-between items-center">
         {/* LEFT */}
         <Link href="/">
@@ -26,7 +28,8 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
         </Link>
 
         {/* RIGHT */}
-        <section className="">
+        <section className="flex items-center gap-8">
+            <DarkMode />
           <div className="md:hidden flex">
             <MobileMenu user={user} />
           </div>
@@ -34,10 +37,10 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             {!user ? (
               <>
                 <Link href="/login">
-                  <div className="button_borderb">Log In</div>
+                  <button className="button_borderb">Log In</button>
                 </Link>
                 <Link href="/signup">
-                  <div className="button">Get Started</div>
+                  <Button size='lg' className="font-semibold">Get Started</Button>
                 </Link>
               </>
             ) : (

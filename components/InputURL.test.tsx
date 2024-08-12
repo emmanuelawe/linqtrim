@@ -32,7 +32,7 @@ describe("InputURL Component", () => {
       target: { value: "https://example.com" },
     });
 
-    fireEvent.change(screen.getByPlaceholderText(/unique id/i), {
+    fireEvent.change(screen.getByPlaceholderText(/custom alias/i), {
       target: { value: "custom-id" },
     });
     

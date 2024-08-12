@@ -4,31 +4,36 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signupSchema } from "@/lib/validationSchemas";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { signInWithGoogle, signup } from "@/app/(authentication)/login/actions";
 import { useSearchParams } from "next/navigation";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import ButtonLoader from "./ButtonLoader";
 
 const SignupForm = () => {
   // Extract the message from the query parameters
   const searchParams = useSearchParams();
   const message = searchParams.get("message");
+  const [isLoading, setIsLoading] = useState(false)
 
-   // React Hook Form
-   const {
+  // React Hook Form
+  const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: zodResolver(signupSchema) });
 
   const onSubmit = async (data: any) => {
-    await signup(data);
+    setIsLoading(true)
+    const formData = new FormData();
+    formData.append("email", data.email);
+    formData.append("password", data.password);
+    await signup(formData);
   };
 
-
   return (
-    <div className="flex md:p-10 p-6 bg-white w-full max-w-xl h-[32rem] items-center rounded-xl drop-shadow-xl">
+    <div className="flex md:p-10 p-6 bg-white w-full max-w-3xl h-[32rem] items-center rounded-xl drop-shadow-xl">
       <div className="w-full   ">
         <h2 className="md:text-2xl font-bold mt-2">Sign Up</h2>
         <p className="mt-2 md:text-sm text-gray-400">
@@ -64,9 +69,13 @@ const SignupForm = () => {
           {message && (
             <div className="mt-4 text-red-500 text-sm">{message}</div>
           )}
+           { isLoading ? 
+            <ButtonLoader  />
+            :
           <Button size="lg" type="submit" className="button mt-10 md:text-lg">
             Create account
           </Button>
+}
           <Button onClick={() => signInWithGoogle()} variant="outline" size="lg" type="button" className="mt-4 md:text-base">
             Sign in with Google
           </Button>

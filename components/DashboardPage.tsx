@@ -98,7 +98,7 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
   };
 
   return (
-    <main>
+    <main className="md:mx-auto md:container mt-20">
       <h1 className="text-2xl font-bold">Your Dashboard</h1>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -109,16 +109,16 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
             onChange={(e) => setLongUrl(e.target.value)}
             placeholder="Paste long URL"
             required
-            className="flex pl-4 py-3 pr-6 md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-16 h-14 w-full rounded-xl bg-transparent"
+            className="flex pl-4 py-3 pr-6 border-2 border-gray-700/70 md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-16 h-14 w-full rounded-s-xl bg-transparent"
           />
-          <div className="border-l-2 border-white" />
+          <div className="border-l-2 border-gray-700/70" />
           <input
             type="text"
             value={customUrl}
             onChange={(e) => setCustomUrl(e.target.value)}
-            placeholder="Unique ID"
+            placeholder="Custom alias"
             required
-            className="flex pr-4 pl-2 py-3 text-center  md:placeholder:text-base placeholder:italic placeholder:text-xs focus:outline-none md:h-16 h-14 w-[30%] rounded-e-xl placeholder:text-white text-white bg-gray-700"
+            className="flex pr-4 pl-2 py-3 text-center  md:placeholder:text-base placeholder:italic placeholder:text-xs focus:outline-none md:h-16 h-14 w-[40%] md:w-[30%] rounded-e-xl placeholder:text-white text-white bg-gray-700/70"
           />
         </div>
         <button type="submit" className="button">

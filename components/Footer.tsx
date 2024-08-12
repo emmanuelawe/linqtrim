@@ -4,11 +4,11 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <main className="bg-[#2EB77A] h-auto md:-mx-[1440px]">
-      <div className="flex text-white flex-col space-y-10 mx-4 md:mx-[1440px]">
-        <div className="flex flex-col md:flex-row min-h-[50vh] items-center md:justify-around space-y-9 md:space-y-0 pt-16 md:pt-0 md:space-x-20">
+    <main className="bg-[#2EB77A] h-auto mt-20 md:mt-40">
+      <div className="flex text-white flex-col md:mx-auto md:container ">
+        <div className="flex flex-col md:flex-row min-h-[50vh] md:items-center md:justify-around gap-9 pt-16 md:pt-0 md:space-x-20">
           {/*LOGO 2024 */}
-          <section className="flex flex-col ">
+          <section className="flex flex-col items-center">
             <div className="md:mb-6 mb-2 self-center md:self-start">
               <Link href="/">
                 <section>
@@ -28,10 +28,10 @@ const Footer = () => {
           </section>
 
           {/* LINKS TO PAGES */}
-          <section className="flex flex-wrap max-w-64 md:max-w-full md:justify-between items-center space-x-6 md:space-x-24">
+          <section className="flex w-full md:justify-around justify-center items-center space-x-6 md:space-x-24">
             <div className="text-xs md:text-sm">
               <h2 className="md:text-xl text-base font-semibold text-[#F2E3D0]">
-                Products
+                Product
               </h2>
               <p>URL Shortener</p>
               <p>QR Codes</p>
@@ -40,29 +40,26 @@ const Footer = () => {
 
             <div className="text-xs md:text-sm">
               <h2 className="md:text-xl text-base  font-semibold text-[#F2E3D0]">
-                Products
+                Contact
               </h2>
-              <p>URL Shortener</p>
-              <p>QR Codes</p>
-              <p>Link Analytics</p>
+              <p>About us</p>
+              <p>Support</p>
+              <p>Contact us</p>
             </div>
 
             <div className="text-xs md:text-sm">
               <h2 className="md:text-xl text-base  font-semibold text-[#F2E3D0]">
                 Legal
               </h2>
-              <p>URL Shortener</p>
-              <p>QR Codes</p>
-              <p>Link Analytics</p>
-            </div>
-
-            <div className="text-sm">
-              <h2 className="md:text-xl text-base  font-semibold text-[#F2E3D0]">
-                Company
-              </h2>
-              <p>URL Shortener</p>
-              <p>QR Codes</p>
-              <p>Link Analytics</p>
+              <Link href="/privacy">
+                <p>Privacy Policy</p>
+              </Link>
+              <Link href="/cookie">
+                <p>Cookie Policy</p>
+              </Link>
+              <Link href="/tos">
+                <p>Terms of Service</p>
+              </Link>
             </div>
           </section>
         </div>

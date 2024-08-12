@@ -2,16 +2,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useUser } from "@/context/UserContext";
+import { Button } from "./ui/button";
 
 const HeroSection = () => {
   const {user} = useUser()
 
   return (
-    <main className="flex flex-col md:flex-row md:pt-20 pt-16 md:mx-32 mx-4">
+    <main className="flex flex-col md:flex-row mt-20 md:mt-40 md:mx-auto md:container">
       <div className="flex items-center justify-between w-full gap-6">
         {/* LEFT */}
         <section className="md:max-w-[32rem] w-full items-center md:items-start">
-          <h1 className="h1 py-4">
+          <h1 className="h1 py-4 text-center md:text-start">
             Shorten links{" "}
             <span className="italic text-[#2EB77A]">effortlessly</span>
             <br /> and stay in control
@@ -23,7 +24,7 @@ const HeroSection = () => {
             links.
           </p>
 
-          <div className="my-8 flex md:justify-between justify-start items-center gap-4">
+          <div className="mt-8 flex md:justify-between justify-start items-center gap-4">
             {user ? (
               <div className="flex w-full">
                 <Link

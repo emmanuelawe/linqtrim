@@ -7,6 +7,7 @@ import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/ssr";
 import { createClient } from "@/utils/supabase/server";
 import { UserProvider } from "@/context/UserContext";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -28,6 +29,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // await new Promise((resolve) => setTimeout(resolve, 2000))
   //TO GET USER SESSION
   // Use cookies() to manage the cookies object
   const supabase = createClient();
@@ -39,13 +41,20 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`overflow-x-hidden w-full md:mx-auto md:container  ${poppins.className}`}
+        className={`overflow-x-hidden  w-full ${poppins.className}`}
       >
-        <Navbar user={user} />
-        <UserProvider user={user}>
-          <main className="mx-4 my-16 min-h-screen">{children}</main>
-          <Footer />
-        </UserProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navbar user={user} />
+          <UserProvider user={user}>
+            <main className="mx-4 min-h-screen">{children}</main>
+            <Footer />
+          </UserProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

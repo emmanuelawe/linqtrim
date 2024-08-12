@@ -1,6 +1,6 @@
 const LinqFeatures = () => {
   return (
-    <main className="w-full flex flex-col md:flex-row items-center justify-between md:space-x-6 space-y-6 md:space-y-0">
+    <main className="w-full flex flex-col md:flex-row md:mx-auto md:container  items-center justify-between gap-6">
       {/* REPLACE THESE CARDS BY MAPPING */}
       <section className="bg-[#fdfdfd] flex flex-col items-center drop-shadow-xl h-auto md:w-1/3 rounded-xl p-8">
         <h1 className="text-2xl font-bold py-4">URL Shortener</h1>

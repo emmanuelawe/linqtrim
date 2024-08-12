@@ -19,7 +19,7 @@ const MobileMenu: React.FC<MobileProps> = ({user}) => {
   return (
     <main>
       <div className="md:hidden flex items-center gap-4">
-      {user && (<><NavDropdown /></>)}
+      {user ? (<><NavDropdown /></>) :
       <div
         className="flex flex-col gap-[4.5px] cursor-pointer"
         onClick={() => setIsOpen((prev) => !prev)}
@@ -39,7 +39,7 @@ const MobileMenu: React.FC<MobileProps> = ({user}) => {
             isOpen ? "-rotate-45" : ""
           } origin-left ease-in-out duration-500`}
         />
-      </div>
+      </div>}
       </div>
       {isOpen && (
         <div className="absolute top-24 left-0 w-full h-[calc(25vh-96px)] ease-in duration-200 bg-[#2EB77A] flex flex-col justify-center gap-4">

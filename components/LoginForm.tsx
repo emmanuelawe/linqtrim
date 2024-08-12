@@ -8,11 +8,15 @@ import { useSearchParams } from "next/navigation";
 import { login, signInWithGoogle } from "@/app/(authentication)/login/actions";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
+import { useState } from "react";
+import ButtonLoader from "./ButtonLoader";
+
 
 const LoginForm = () => {
   // Extract the message from the query parameters
   const searchParams = useSearchParams();
   const message = searchParams.get("message");
+  const [isLoading, setIsLoading] = useState(false)
 
   // React Hook Form
   const {
@@ -22,11 +26,15 @@ const LoginForm = () => {
   } = useForm({ resolver: zodResolver(loginSchema) });
 
   const onSubmit = async (data: any) => {
-    await login(data);
+    setIsLoading(true)
+    const formData = new FormData();
+    formData.append("email", data.email);
+    formData.append("password", data.password);
+    await login(formData);
   };
-
+  
   return (
-    <div className="flex md:p-10 p-6 bg-white w-full max-w-xl h-[32rem] items-center rounded-xl drop-shadow-xl">
+    <div className="flex md:p-10 p-6 bg-white w-full max-w-3xl h-[32rem] items-center rounded-xl drop-shadow-xl">
       <div className="w-full">
         <h2 className="md:text-2xl font-bold mt-2">Log In</h2>
         <p className="mt-2 md:text-sm text-gray-400">
@@ -62,9 +70,13 @@ const LoginForm = () => {
           {message && (
             <div className="mt-4 text-red-500 text-sm">{message}</div>
           )}
+          { isLoading ? 
+            <ButtonLoader  />
+            :
           <Button size="lg" type="submit" className="button mt-10 md:text-lg">
             Log in
           </Button>
+}
           <Button onClick={() => signInWithGoogle()} variant="outline" size="lg" type="button" className="mt-4 md:text-base">
             Sign in with Google
           </Button>

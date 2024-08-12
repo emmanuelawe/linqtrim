@@ -3,6 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useUser } from "@/context/UserContext";
 import { useRouter } from "next/navigation";
+import { Button } from "./ui/button";
 
 const InputURL = () => {
   const {user} = useUser()
@@ -38,10 +39,10 @@ const InputURL = () => {
 
 
   return (
-    <main className="flex flex-col gap-5 md:mx-48 md:mt-20 mt-10">
+    <main className="flex flex-col md:mx-auto md:container gap-6">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col md:flex-row rounded-xl justify-between gap-4 "
+        className="flex flex-col md:flex-row rounded-xl justify-between gap-4 md:mx-4 mx-0"
       >
         <div className="flex bg-[#fdfdfd] rounded-xl w-full shadow-md">
           <input
@@ -50,24 +51,26 @@ const InputURL = () => {
             onChange={(e) => setLongUrl(e.target.value)}
             placeholder="Paste long URL"
             required
-            className="flex pl-4 py-3 pr-6 md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-16 h-14 w-full rounded-xl bg-transparent"
+            className="flex pl-4 py-3 pr-6 border-2 border-gray-700/70 md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-16 h-14 w-full rounded-s-xl bg-transparent"
           />
-          <div className="border-l-2 border-white" />
+          <div className="border-l-2 border-gray-700/70" />
           <input
             type="text"
             value={customUrl}
             onChange={(e) => setCustomUrl(e.target.value)}
-            placeholder="Unique ID"
+            placeholder="Custom alias"
             required
-            className="flex pr-4 pl-2 py-3 text-center md:placeholder:text-base placeholder:italic placeholder:text-xs focus:outline-none md:h-16 h-14 w-[30%]  rounded-e-xl placeholder:text-white text-white bg-gray-700"
+            className="flex pr-4 pl-2 py-3 text-center md:placeholder:text-base placeholder:italic placeholder:text-xs focus:outline-none md:h-16 h-14 w-[40%] md:w-[30%] rounded-e-xl placeholder:text-white text-white bg-gray-700/70"
           />
         </div>
-        <button
+        
+        <Button
+        size='lg'
           type="submit"
           className="url_button w-full md:w-auto md:h-16 h-14 shadow-md"
         >
           Shorten!
-        </button>
+        </Button>
       </form>
       <p className="self-center text-xs text-center md:text-base">
         By using our service you accept the{" "}

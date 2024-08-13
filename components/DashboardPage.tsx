@@ -4,9 +4,12 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { saveAs } from "file-saver";
 import ReactMarkdown from "react-markdown";
+import { ChartLine, DownloadCloudIcon } from "lucide-react";
+import { Button } from "./ui/button";
+import DashboardSkeleton from "./DashboardSkeleton";
 
 interface URLData {
-  id: string;
+  id: number;
   original_url: string;
   created_at: string;
   custom_url: string;
@@ -17,7 +20,7 @@ interface URLData {
 }
 
 interface AnalyticsData {
-  url_id: string;
+  url_id: number;
   created_at: string;
   city: string;
   country: string;
@@ -30,7 +33,6 @@ interface DashboardProps {
 }
 
 const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
-  console.log(urls);
   const [longUrl, setLongUrl] = useState("");
   const [customUrl, setCustomUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
@@ -38,14 +40,20 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
   const [editMode, setEditMode] = useState<Record<string, boolean>>({});
   const [description, setDescription] = useState("");
   const [localUrls, setLocalUrls] = useState<URLData[]>(urls);
+  const [showAnalytics, setShowAnalytics] = useState<Record<string, boolean>>(
+    {}
+  );
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setLocalUrls(urls);
-  }, [urls]);
+    setIsLoading(false);
+  }, []);
 
+  if (isLoading) {
+    return <DashboardSkeleton />;
+  }
 
-  // Toggle the Edit Mode
-  const handleEditToggle = (id: string, currentDescription: string) => {
+  const handleEditToggle = (id: number, currentDescription: string) => {
     setEditMode((prevState) => ({
       ...prevState,
       [id]: !prevState[id],
@@ -53,8 +61,7 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
     setDescription(currentDescription);
   };
 
-  // Handle description update with the update-description api
-  const handleUpdateDescription = async (id: string) => {
+  const handleUpdateDescription = async (id: number) => {
     const response = await fetch("/api/update-description", {
       method: "POST",
       body: JSON.stringify({ id, description }),
@@ -62,10 +69,7 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
     const data = await response.json();
 
     if (response.ok) {
-      // Update the local state after successful update
       setEditMode((prevState) => ({ ...prevState, [id]: false }));
-
-      // Update the description in the localUrls state
       setLocalUrls((prevUrls) =>
         prevUrls.map((url) =>
           url.id === id ? { ...url, description: description } : url
@@ -78,6 +82,7 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
     const response = await fetch("/api/shorten", {
       method: "POST",
       body: JSON.stringify({ originalUrl: longUrl, customUrl: customUrl }),
@@ -86,55 +91,97 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
     if (response.ok) {
       setShortUrl(data.shortUrl);
       setQrCodeUrl(data.qrCodeUrl);
+
+      // Update localUrls with the new URL
+      setLocalUrls((prevUrls) => [
+        ...prevUrls,
+        {
+          id: data.id,
+          original_url: longUrl,
+          created_at: data.createdAt,
+          custom_url: customUrl,
+          short_url: data.shortUrl,
+          qr: data.qrCodeUrl,
+          url_visits: 0, // Assuming 0 initial visits
+          description: "",
+        },
+      ]);
+      setIsLoading(false);
     } else {
       alert(`Error: ${data.error}`);
     }
   };
 
-  const handleDownloadQRCode = () => {
+  const handleDownloadQRCode = (qrCodeUrl: string) => {
     if (qrCodeUrl) {
       saveAs(qrCodeUrl, "qrcode.png");
     }
   };
 
-  return (
-    <main className="md:mx-auto md:container mt-20">
-      <h1 className="text-2xl font-bold">Your Dashboard</h1>
+  const toggleAnalytics = (id: number) => {
+    setShowAnalytics((prevState) => ({
+      ...prevState,
+      [id]: !prevState[id],
+    }));
+  };
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <div className="flex bg-[#fdfdfd] rounded-xl w-full shadow-md">
+  const handleDelete = async (id: number) => {
+    const response = await fetch("/api/delete-url", {
+      method: "POST",
+      body: JSON.stringify({ id }),
+    });
+    const data = await response.json();
+
+    if (response.ok) {
+      setLocalUrls((prevUrls) => prevUrls.filter((url) => url.id !== id));
+    } else {
+      alert(`Error: ${data.error}`);
+    }
+  };
+
+  return (
+    <main className="container mx-auto px-4 md:px-0 mt-10">
+      <h1 className="text-2xl font-bold mb-6">Your Dashboard</h1>
+
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 mb-10">
+        <div className="flex rounded-xl w-full shadow-md gap-2">
           <input
             type="text"
             value={longUrl}
             onChange={(e) => setLongUrl(e.target.value)}
             placeholder="Paste long URL"
             required
-            className="flex pl-4 py-3 pr-6 border-2 border-gray-700/70 md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-16 h-14 w-full rounded-s-xl bg-transparent"
+            className="flex dark:text-black pl-4 py-3 pr-6 border-2 border-gray-700/70 dark:border-white dark:bg-white md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-16 h-14 w-full rounded-s-xl"
           />
-          <div className="border-l-2 border-gray-700/70" />
           <input
             type="text"
             value={customUrl}
             onChange={(e) => setCustomUrl(e.target.value)}
-            placeholder="Custom alias"
+            placeholder="yourname"
             required
-            className="flex pr-4 pl-2 py-3 text-center  md:placeholder:text-base placeholder:italic placeholder:text-xs focus:outline-none md:h-16 h-14 w-[40%] md:w-[30%] rounded-e-xl placeholder:text-white text-white bg-gray-700/70"
+            className="flex dark:text-black pr-4 pl-2 py-3 border-2 border-gray-700/70 dark:border-white dark:bg-white text-center md:placeholder:text-base placeholder:italic placeholder:text-xs focus:outline-none md:h-16 h-14 w-[40%] md:w-[30%] rounded-e-xl 4"
           />
         </div>
-        <button type="submit" className="button">
+        <button type="submit" className="button w-full md:w-auto">
           Shorten URL
         </button>
       </form>
 
-      {/* Display shortened URL */}
-
       {shortUrl && (
-        <div className=" flex bg-white h-auto w-full my-4">
-          <div>Shortened URL: {shortUrl}</div>
+        <div className="flex flex-col md:flex-row bg-white w-full mb-10 rounded-xl shadow-sm items-center justify-between px-6 py-4">
+          <div className="flex flex-col">
+            <span className="font-bold text-xl text-[#2EB77A]">
+              Shortened URL:
+            </span>
+            <span className="font-medium">{shortUrl}</span>
+          </div>
           {qrCodeUrl && (
-            <div>
-              <Image src={qrCodeUrl} alt="QR Code" width={50} height={50} />
-              <button onClick={handleDownloadQRCode} className="button mt-2">
+            <div className="flex gap-4 items-center">
+              <Image src={qrCodeUrl} alt="QR Code" width={80} height={80} />
+              <button
+                onClick={() => handleDownloadQRCode(qrCodeUrl)}
+                className="button"
+              >
                 Download QR Code
               </button>
             </div>
@@ -142,76 +189,130 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
         </div>
       )}
 
-      <div className="flex w-full justify-between">
-        <section className="">
-          <h2>Your Shortened URLS</h2>
-          {urls.length === 0 ? (
-            <p>No URLs shortened yet.</p>
-          ) : (
-            <ul className="flex flex-col gap-4">
-              {localUrls.map((url) => (
-                <li key={url.id}>
-                  <div>
-                    <div className="">
-                      {editMode[url.id] ? (
-                        <textarea
-                          value={description}
-                          onChange={(e) => setDescription(e.target.value)}
-                          placeholder="Enter description"
-                          className="flex pl-4 py-3 pr-6 md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-16 h-14 w-full rounded-xl bg-transparent"
-                        />
-                      ) : (
-                        <ReactMarkdown>{url.description || ""}</ReactMarkdown>
-                      )}
-                    </div>
+      <section className="flex flex-col gap-12">
+        <h2 className="font-bold text-2xl mb-4">Your Shortened URLs</h2>
+        {localUrls.length === 0 ? (
+          <p>No URLs shortened yet.</p>
+        ) : (
+          localUrls.map((url) => (
+            <div
+              key={url.id}
+              className="bg-white rounded-xl shadow-md p-6 mb-4"
+            >
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="flex flex-col w-[50%]">
+                  {editMode[url.id] ? (
+                    <textarea
+                      value={description}
+                      onChange={(e) => setDescription(e.target.value)}
+                      placeholder="Enter description"
+                      className="p-4 dark:text-black border-2 border-gray-300 rounded-xl bg-transparent mb-2"
+                    />
+                  ) : (
+                    <ReactMarkdown>{url.description || ""}</ReactMarkdown>
+                  )}
+                  <div className="space-x-4">
                     <button
                       onClick={() =>
                         editMode[url.id]
                           ? handleUpdateDescription(url.id)
                           : handleEditToggle(url.id, url.description || "")
                       }
+                      className="button_borderb mt-2 self-start"
                     >
                       {editMode[url.id] ? "Save" : "Add Description"}
                     </button>
+                    <Button
+                      variant="destructive"
+                      onClick={() => handleDelete(url.id)}
+                      className="p-3 font-semibold rounded-md cursor-pointer bg-red-600 dark:bg-red-600 text-white"
+                    >
+                      Delete
+                    </Button>
                   </div>
+                </div>
 
-                  <a href={url.short_url}>{url.short_url}</a>
-                  <Image src={url.qr} alt="QR Code" width={50} height={50} />
-                  <button
-                    onClick={handleDownloadQRCode}
-                    className="button mt-2"
+                <div className="flex flex-col md:flex-row md:items-center gap-4">
+                  <a
+                    href={url.short_url}
+                    className="text-[#2EB77A] font-medium underline"
                   >
-                    Download QR Code
-                  </button>
-                  <p>Created at: {new Date(url.created_at).toLocaleString()}</p>
-                  <p>Visits: {url.url_visits}</p>
-                </li>
-              ))}
-            </ul>
-          )}
-        </section>
-
-        <section>
-          <h2>Analytics</h2>
-          {analytics.length === 0 ? (
-            <p>No analytics data available</p>
-          ) : (
-            <ul>
-              {analytics.map((analyticsItem) => (
-                <li key={analyticsItem.url_id}>
-                  <p>
-                    Created at:{" "}
-                    {new Date(analyticsItem.created_at).toLocaleString()}
+                    {url.short_url}
+                  </a>
+                  <p className="flex text-gray-500 items-center">
+                    <ChartLine size={16} />
+                    <span className="text-xl ml-1 font-semibold text-[#2EB77A]">
+                      {url.url_visits}
+                    </span>{" "}
                   </p>
-                  <p>City: {analyticsItem.city}</p>
-                  <p>Country: {analyticsItem.country}</p>
-                  <p>Device: {analyticsItem.device}</p>
-                </li>
-              ))}
-            </ul>
-          )}
-        </section>
-      </div>
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src={url.qr}
+                      alt="QR Code"
+                      width={80}
+                      height={80}
+                      className="rounded-xl border-2 border-[#2EB77A] "
+                    />
+                    <button
+                      onClick={() => handleDownloadQRCode(url.qr)}
+                      className="bg-[#2EB77A] p-1 rounded-md cursor-pointer"
+                    >
+                      <DownloadCloudIcon color="white" size={20} />
+                    </button>
+                  </div>
+                  <button
+                    onClick={() => toggleAnalytics(url.id)}
+                    className="button"
+                  >
+                    {showAnalytics[url.id]
+                      ? "Hide Analytics"
+                      : "Show Analytics"}
+                  </button>
+                </div>
+              </div>
+
+              {showAnalytics[url.id] && (
+                <div className="mt-4 dark:text-black">
+                  <h3 className="font-bold text-xl text-[#2EB77A]">
+                    Analytics
+                  </h3>
+                  <ul className="flex flex-col gap-4 mt-2">
+                    {analytics
+                      .filter(
+                        (analyticsItem) => analyticsItem.url_id === url.id
+                      )
+                      .map((analyticsItem) => (
+                        <li
+                          key={analyticsItem.url_id}
+                          className="bg-gray-50 p-4 rounded-xl shadow-sm"
+                        >
+                          <p>
+                            <span className="font-semibold">Date: </span>
+                            {new Date(
+                              analyticsItem.created_at
+                            ).toLocaleString()}
+                          </p>
+                          <p>
+                            <span className="font-semibold">City: </span>
+                            {analyticsItem.city}
+                          </p>
+                          <p>
+                            <span className="font-semibold">Country: </span>
+                            {analyticsItem.country}
+                          </p>
+                          <p>
+                            <span className="font-semibold">Device: </span>
+                            {analyticsItem.device}
+                          </p>
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          ))
+        )}
+      </section>
     </main>
   );
 };

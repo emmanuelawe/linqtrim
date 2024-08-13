@@ -37,7 +37,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             {!user ? (
               <>
                 <Link href="/login">
-                  <button className="button_borderb">Log In</button>
+                  <button className="button_borderb dark:text-white">Log In</button>
                 </Link>
                 <Link href="/signup">
                   <Button size='lg' className="font-semibold">Get Started</Button>

@@ -29,9 +29,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // await new Promise((resolve) => setTimeout(resolve, 2000))
-  //TO GET USER SESSION
-  // Use cookies() to manage the cookies object
   const supabase = createClient();
 
   const {

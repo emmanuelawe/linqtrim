@@ -34,7 +34,7 @@ const LoginForm = () => {
   };
   
   return (
-    <div className="flex md:p-10 p-6 bg-white w-full max-w-3xl h-[32rem] items-center rounded-xl drop-shadow-xl">
+    <div className="flex md:p-10 p-6 dark:text-black bg-white w-full max-w-3xl h-[32rem] items-center rounded-xl drop-shadow-xl">
       <div className="w-full">
         <h2 className="md:text-2xl font-bold mt-2">Log In</h2>
         <p className="mt-2 md:text-sm text-gray-400">
@@ -48,7 +48,7 @@ const LoginForm = () => {
               type="email"
               {...register("email")}
               required
-              className="flex mt-2 pl-4 py-3 pr-32 md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-10 h-8 w-full rounded-md border-2 border-gray-100 bg-gray-50/50"
+              className="flex dark:text-white mt-2 pl-4 py-3 pr-32 md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-10 h-8 w-full rounded-md border-2 border-gray-100 bg-gray-50/50"
             />
             {errors.email?.message && (
               <p className="text-red-500">{errors.email.message.toString()}</p>
@@ -61,7 +61,7 @@ const LoginForm = () => {
               type="password"
               {...register("password")}
               required
-              className="flex mt-2 pl-4 py-4 pr-32 md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-10 h-8 w-full rounded-md border-2 border-gray-100 bg-gray-50/50"
+              className="flex dark:text-white mt-2 pl-4 py-4 pr-32 md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-10 h-8 w-full rounded-md border-2 border-gray-100 bg-gray-50/50"
             />
             {errors.password?.message && (
               <p className="text-red-500">{errors.password.message.toString()}</p>
@@ -77,7 +77,7 @@ const LoginForm = () => {
             Log in
           </Button>
 }
-          <Button onClick={() => signInWithGoogle()} variant="outline" size="lg" type="button" className="mt-4 md:text-base">
+          <Button onClick={() => signInWithGoogle()} variant="outline" size="lg" type="button" className="mt-4 md:text-base dark:text-white">
             Sign in with Google
           </Button>
         </form>

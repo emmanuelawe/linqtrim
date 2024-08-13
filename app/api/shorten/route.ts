@@ -3,7 +3,6 @@ import { createClient } from "@/utils/supabase/server";
 import QRCode from "qrcode";
 import { headers } from "next/headers";
 
-
 // Get Location function
 async function getLocation(ip: string) {
   try {
@@ -27,7 +26,7 @@ async function getLocation(ip: string) {
 export async function POST(request: Request) {
   const supabase = createClient();
   const { originalUrl, customUrl } = await request.json();
-  const alias = customUrl
+  const alias = customUrl;
   const url = new URL(request.url); // Parse the request url
   const shortUrl = `${url.origin}/${alias}`;
   const {
@@ -77,7 +76,6 @@ export async function POST(request: Request) {
         custom_url: customUrl,
         short_url: shortUrl,
         created_at: new Date().toLocaleString(),
-        // url_visits: 
         qr: qrCodeUrl,
         city: city,
         country: country,

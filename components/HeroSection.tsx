@@ -2,10 +2,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useUser } from "@/context/UserContext";
-import { Button } from "./ui/button";
+
 
 const HeroSection = () => {
   const {user} = useUser()
+
 
   return (
     <main className="flex flex-col md:flex-row mt-20 md:mt-40 md:mx-auto md:container">

@@ -4,20 +4,38 @@ import Image from "next/image";
 import { useUser } from "@/context/UserContext";
 import { useRouter } from "next/navigation";
 import { Button } from "./ui/button";
+import ShortenLoader from "./ShortenLoader";
+import { saveAs } from "file-saver";
 
 const InputURL = () => {
-  const {user} = useUser()
-  const router = useRouter()
+  const { user } = useUser();
+  const router = useRouter();
   const [longUrl, setLongUrl] = useState("");
   const [customUrl, setCustomUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
   const [qrCodeUrl, setQrCodeUrl] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
+ 
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
+    setIsLoading(true);
+    // Simulate a delay (e.g., for navigation or API call)
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+
     if (!user) {
+
+      setIsLoading(true);
+      // Simulate a delay (e.g., for navigation or API call)
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 2000);
+      
       // Redirect to login if user is not authenticated
       router.push("/login");
       return;
@@ -37,6 +55,11 @@ const InputURL = () => {
     }
   };
 
+  const handleDownloadQRCode = (qrCodeUrl: string) => {
+    if (qrCodeUrl) {
+      saveAs(qrCodeUrl, "qrcode.png");
+    }
+  };
 
   return (
     <main className="flex flex-col md:mx-auto md:container gap-6">
@@ -44,45 +67,60 @@ const InputURL = () => {
         onSubmit={handleSubmit}
         className="flex flex-col md:flex-row rounded-xl justify-between gap-4 md:mx-4 mx-0"
       >
-        <div className="flex bg-[#fdfdfd] rounded-xl w-full shadow-md">
+        <div className="flex rounded-xl w-full shadow-md gap-2">
           <input
             type="text"
             value={longUrl}
             onChange={(e) => setLongUrl(e.target.value)}
             placeholder="Paste long URL"
             required
-            className="flex pl-4 py-3 pr-6 border-2 border-gray-700/70 md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-16 h-14 w-full rounded-s-xl bg-transparent"
+            className="flex dark:text-black pl-4 py-3 pr-6 border-2 border-gray-700/70 dark:border-white dark:bg-white md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-16 h-14 w-full rounded-s-xl"
           />
-          <div className="border-l-2 border-gray-700/70" />
           <input
             type="text"
             value={customUrl}
             onChange={(e) => setCustomUrl(e.target.value)}
-            placeholder="Custom alias"
+            placeholder="yourname"
             required
-            className="flex pr-4 pl-2 py-3 text-center md:placeholder:text-base placeholder:italic placeholder:text-xs focus:outline-none md:h-16 h-14 w-[40%] md:w-[30%] rounded-e-xl placeholder:text-white text-white bg-gray-700/70"
+            className="flex dark:text-black pr-4 pl-2 py-3 border-2 border-gray-700/70 dark:border-white dark:bg-white text-center md:placeholder:text-base placeholder:italic placeholder:text-xs focus:outline-none md:h-16 h-14 w-[40%] md:w-[30%] rounded-e-xl 4"
           />
         </div>
+
+        {isLoading ? <ShortenLoader /> :
+        
         
         <Button
-        size='lg'
-          type="submit"
-          className="url_button w-full md:w-auto md:h-16 h-14 shadow-md"
+        size="lg"
+        type="submit"
+        className="url_button w-full md:w-auto md:h-16 h-14 shadow-md"
         >
           Shorten!
         </Button>
+        }
       </form>
       <p className="self-center text-xs text-center md:text-base">
         By using our service you accept the{" "}
         <span className="font-semibold text-[#2EB77A]">Terms of service</span>{" "}
         and <span className="font-semibold text-[#2EB77A]">Privacy Policy</span>
       </p>
+     
       {shortUrl && (
-        <div className=" flex bg-white h-auto w-full my-4">
-          <div>Shortened URL: {shortUrl}</div>
+        <div className="flex flex-col md:flex-row bg-white w-full mb-10 rounded-xl shadow-sm items-center justify-between px-6 py-4">
+          <div className="flex flex-col">
+            <span className="font-bold text-xl text-[#2EB77A]">
+              Shortened URL:
+            </span>
+            <span className="font-medium">{shortUrl}</span>
+          </div>
           {qrCodeUrl && (
-            <div>
-              <Image src={qrCodeUrl} alt="QR Code" width={50} height={50} />
+            <div className="flex gap-4 items-center">
+              <Image src={qrCodeUrl} alt="QR Code" width={80} height={80} />
+              <button
+                onClick={() => handleDownloadQRCode(qrCodeUrl)}
+                className="button"
+              >
+                Download QR Code
+              </button>
             </div>
           )}
         </div>

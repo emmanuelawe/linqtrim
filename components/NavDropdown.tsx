@@ -37,7 +37,7 @@ const NavDropdown: React.FC<NavDDProps> = ({user}) => {
       </button>
       {dropdownVisible && (
         <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
-          <div className="w-full block items-center px-3 py-2 font-semibold text-sm text-left text-[#2EB77A]">
+          <div className="w-full block items-center px-3 py-2 font-semibold text-left text-[#2EB77A]">
             {getEmailName(user?.email || 'Guest')}
           </div>
           <DropdownMenuSeparator />

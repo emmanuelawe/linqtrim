@@ -1,12 +1,10 @@
-'use client'
 import Image from "next/image";
 import Link from "next/link";
-import { useUser } from "@/context/UserContext";
+import { createClient } from "@/utils/supabase/server";
 
-
-
-const HeroSection = () => {
-  const {user} = useUser()
+const HeroSection = async () => {
+  const supabase = createClient();
+  const {data: {user}} = await supabase.auth.getUser()
 
   return (
     <main className="flex flex-col md:flex-row mt-20 md:mt-40 md:mx-auto md:container">

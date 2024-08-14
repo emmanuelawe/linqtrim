@@ -170,10 +170,12 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
       {shortUrl && (
         <div className="flex flex-col md:flex-row bg-white w-full mb-10 rounded-xl shadow-sm items-center justify-between px-6 py-4">
           <div className="flex flex-col">
-            <span className="font-bold text-xl text-[#2EB77A]">
+            <span className="font-bold text-xl mb-2 text-[#2EB77A]">
               Shortened URL:
             </span>
-            <span className="font-medium">{shortUrl}</span>
+            <span className="font-medium bg-gray-50 p-4 rounded-xl">
+              {shortUrl}
+            </span>
           </div>
           {qrCodeUrl && (
             <div className="flex gap-4 items-center">

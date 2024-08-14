@@ -1,7 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import InputURL from "@/components/InputURL";
 import { useRouter } from "next/navigation";
-import { useUser } from "@/context/UserContext";
 import userEvent from "@testing-library/user-event";
 import Image from "next/image";
 
@@ -9,9 +8,7 @@ jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
 }));
 
-jest.mock("@/context/UserContext", () => ({
-  useUser: jest.fn(),
-}));
+
 
 // Mock the next/image component to avoid dealing with image optimization in tests
 jest.mock("next/image", () => {
@@ -24,7 +21,6 @@ describe("InputURL Component", () => {
   it("should redirect to login if user is not authenticated", async () => {
     const pushMock = jest.fn();
     (useRouter as jest.Mock).mockReturnValue({ push: pushMock });
-    (useUser as jest.Mock).mockReturnValue({ user: null });
 
     render(<InputURL />);
 
@@ -54,7 +50,6 @@ describe("InputURL Component", () => {
     });
 
     (useRouter as jest.Mock).mockReturnValue({ push: pushMock });
-    (useUser as jest.Mock).mockReturnValue({ user: { id: "user-id" } });
 
     global.fetch = fetchMock;
 

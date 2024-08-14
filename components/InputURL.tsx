@@ -1,14 +1,17 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { useUser } from "@/context/UserContext";
 import { useRouter } from "next/navigation";
 import { Button } from "./ui/button";
 import ShortenLoader from "./ShortenLoader";
 import { saveAs } from "file-saver";
+import { User } from "@supabase/supabase-js";
 
-const InputURL = () => {
-  const { user } = useUser();
+interface InputProps {
+  user: User | null;
+}
+
+const InputURL: React.FC<InputProps> = ({user}) => {
   const router = useRouter();
   const [longUrl, setLongUrl] = useState("");
   const [customUrl, setCustomUrl] = useState("");
@@ -110,7 +113,7 @@ const InputURL = () => {
             <span className="font-bold text-xl text-[#2EB77A]">
               Shortened URL:
             </span>
-            <span className="font-medium">{shortUrl}</span>
+            <span className="font-medium bg-gray-50 p-4 rounded-xl">{shortUrl}</span>
           </div>
           {qrCodeUrl && (
             <div className="flex gap-4 items-center">

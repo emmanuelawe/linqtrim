@@ -1,7 +1,7 @@
 import { Skeleton } from '@/components/ui/skeleton'
 
 
-const DashboardSkeleton = () => {
+const LandingPageSkeleton = () => {
   return (
     <main className="container mx-auto px-4 md:px-0 mt-10">
       <h1 className="text-2xl font-bold mb-6">
@@ -10,8 +10,8 @@ const DashboardSkeleton = () => {
 
       <form className="flex flex-col gap-4 mb-10">
         <div className="flex rounded-xl w-full gap-2">
-          <Skeleton className="flex  pl-4 py-3 pr-6 dark:bg-white md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-16 h-14 w-full rounded-s-xl" />
-          <Skeleton className="flex  pr-4 pl-2 py-3 dark:bg-white text-center md:placeholder:text-base placeholder:italic placeholder:text-xs focus:outline-none md:h-16 h-14 w-[40%] md:w-[30%] rounded-e-xl" />
+          <Skeleton className="flex dark:text-black pl-4 py-3 pr-6 border-2 dark:bg-white md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-16 h-14 w-full rounded-s-xl" />
+          <Skeleton className="flex dark:text-black pr-4 pl-2 py-3 border-2 dark:bg-white text-center md:placeholder:text-base placeholder:italic placeholder:text-xs focus:outline-none md:h-16 h-14 w-[40%] md:w-[30%] rounded-e-xl" />
         </div>
         <button type="submit" className=" w-full md:w-auto">
           <Skeleton className="w-full h-10" />
@@ -25,7 +25,7 @@ const DashboardSkeleton = () => {
         <div className="bg-white rounded-xl p-6 mb-4">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex flex-col w-[50%]">
-              <Skeleton className="p-4  border-gray-300 rounded-xl bg-transparent mb-2" />
+              {/* <Skeleton className="p-4 dark:text-black border-2 border-gray-300 rounded-xl bg-transparent mb-2" /> */}
               <div className="space-x-4">
                 <Skeleton className="w-32 h-10" />
                 <Skeleton className="w-24 h-10" />
@@ -43,7 +43,7 @@ const DashboardSkeleton = () => {
             </div>
           </div>
 
-          <div className="mt-4 ">
+          <div className="mt-4 dark:text-black">
             <h3 className="font-bold text-xl text-[#2EB77A]">
               <Skeleton className="w-24 h-6" />
             </h3>
@@ -59,4 +59,4 @@ const DashboardSkeleton = () => {
   );
 };
 
-export default DashboardSkeleton;
+export default LandingPageSkeleton;

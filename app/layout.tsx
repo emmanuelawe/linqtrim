@@ -6,7 +6,6 @@ import Footer from "@/components/Footer";
 import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/ssr";
 import { createClient } from "@/utils/supabase/server";
-import { UserProvider } from "@/context/UserContext";
 import { ThemeProvider } from "@/components/theme-provider";
 
 const poppins = Poppins({
@@ -47,10 +46,8 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <Navbar user={user} />
-          <UserProvider>
             <main className="mx-4 min-h-screen">{children}</main>
             <Footer />
-          </UserProvider>
         </ThemeProvider>
       </body>
     </html>

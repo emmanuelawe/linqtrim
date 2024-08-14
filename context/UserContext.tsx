@@ -1,18 +1,37 @@
-'use client'
+// /context/UserContext.tsx
+"use client";
 
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { createClient } from "@/utils/supabase/client";
+import { User } from "@supabase/supabase-js";
 
 interface UserContextType {
-  user: any; // Replace with actual user type
+  user: User | null;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
-export const UserProvider: React.FC<{ user: any; children: React.ReactNode }> = ({ user, children }) => {
-  return <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>;
+export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      setUser(user);
+    };
+    fetchUser();
+  }, []);
+
+  return (
+    <UserContext.Provider value={{ user }}>
+      {children}
+    </UserContext.Provider>
+  );
 };
 
-export const useUser = () => {
+// Updated useUser to return the full context
+export const useUser = (): UserContextType => {
   const context = useContext(UserContext);
   if (context === undefined) {
     throw new Error("useUser must be used within a UserProvider");

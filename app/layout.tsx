@@ -47,7 +47,7 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <Navbar user={user} />
-          <UserProvider user={user}>
+          <UserProvider>
             <main className="mx-4 min-h-screen">{children}</main>
             <Footer />
           </UserProvider>

@@ -1,56 +1,92 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
 import NavDropdown from "./NavDropdown";
-import { User } from "@supabase/supabase-js";
-import DarkMode from './DarkMode'
+import DarkMode from "./DarkMode";
 import { Button } from "./ui/button";
+import { User } from "@supabase/supabase-js";
+import { useEffect, useState } from "react";
 
 interface NavbarProps {
   user: User | null;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ user }) => {
-  return (
-    <main className="md:px-0 md:mx-auto md:container mx-4">
-      <main className="flex h-24 justify-between items-center">
-        {/* LEFT */}
-        <Link href="/">
-          <section>
-            <Image
-              src="/Linqtrimlogo.png"
-              width={200}
-              height={200}
-              alt="Linqtrim Logo"
-              className="md:w-48 md:h-12 w-24 h-6 md:-ml-[0.4rem] -ml-[0.2rem] hover:scale-105 ease-in-out duration-500"
-            />
-          </section>
-        </Link>
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
 
-        {/* RIGHT */}
-        <section className="flex items-center gap-8">
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    // Show navbar initially
+    setShowNavbar(true);
+
+    // Add scroll event listener
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return (
+    <div
+      className={`transition-transform duration-300 ${showNavbar ? '' : 'hidden'} ${
+        isScrolled ? 'fixed top-0 left-0 right-0 z-50 bg-[#FAFAFA]/50 ease-in-out' : 'relative'
+      }`}
+    >
+      <main className="md:px-0 md:mx-auto md:container mx-4">
+        <div className="flex h-24 justify-between items-center">
+          {/* LEFT */}
+          <Link href="/">
+            <section>
+              <Image
+                src="/Linqtrimlogo.png"
+                width={200}
+                height={200}
+                alt="Linqtrim Logo"
+                className="md:w-48 md:h-12 w-24 h-6 md:-ml-[0.4rem] -ml-[0.2rem] hover:scale-105 ease-in-out duration-500"
+              />
+            </section>
+          </Link>
+
+          {/* RIGHT */}
+          <section className="flex items-center gap-8">
             <DarkMode />
-          <div className="md:hidden flex">
-            <MobileMenu user={user} />
-          </div>
-          <div className="hidden md:flex space-x-8 items-center">
-            {!user ? (
-              <>
-                <Link href="/login">
-                  <button className="button_borderb dark:text-white">Log In</button>
-                </Link>
-                <Link href="/signup">
-                  <Button size='lg' className="font-semibold">Get Started</Button>
-                </Link>
-              </>
-            ) : (
-              <NavDropdown />
-            )}
-          </div>
-        </section>
+            <div className="md:hidden flex">
+              <MobileMenu user={user} />
+            </div>
+            <div className="hidden md:flex space-x-8 items-center">
+              {!user ? (
+                <>
+                  <Link href="/login">
+                    <button className="button_borderb dark:text-white">
+                      Log In
+                    </button>
+                  </Link>
+                  <Link href="/signup">
+                    <Button size="lg" className="font-semibold">
+                      Get Started
+                    </Button>
+                  </Link>
+                </>
+              ) : (
+                <NavDropdown user={user} />
+              )}
+            </div>
+          </section>
+        </div>
       </main>
-      <p className="border-b border-gray-200 w-full -mx-4 hidden" />
-    </main>
+      <p className="border-b border-gray-200 w-full" />
+    </div>
   );
 };
 

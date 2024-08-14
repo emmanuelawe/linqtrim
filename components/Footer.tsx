@@ -4,7 +4,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#2EB77A] py-8 mt-20 md:mt-40 text-white">
+    <footer className="bg-[#2EB77A] pt-20 mt-20 md:mt-40 text-white">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-12">
           {/* LOGO SECTION */}
@@ -20,7 +20,7 @@ const Footer = () => {
                 />
               </p>
             </Link>
-            <p className="text-sm md:text-base text-[#F2E3D0]">
+            <p className="text-sm md:text-base text-[#F2E3D0] md:w-full w-[80%]">
               Free URL Shortener, Branded Short Links & Analytics | Linqtrim
             </p>
           </section>
@@ -57,7 +57,7 @@ const Footer = () => {
         </div>
 
         {/* COPYRIGHT SECTION */}
-        <div className="mt-8 text-center text-xs md:text-base">
+        <div className="mt-20 pb-4 text-center text-xs md:text-base">
           <p>© 2024 Chase Ntwk. All Rights Reserved.</p>
         </div>
       </div>

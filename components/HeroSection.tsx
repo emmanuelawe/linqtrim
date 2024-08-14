@@ -4,15 +4,15 @@ import Link from "next/link";
 import { useUser } from "@/context/UserContext";
 
 
+
 const HeroSection = () => {
   const {user} = useUser()
-
 
   return (
     <main className="flex flex-col md:flex-row mt-20 md:mt-40 md:mx-auto md:container">
       <div className="flex items-center justify-between w-full gap-6">
         {/* LEFT */}
-        <section className="md:max-w-[32rem] w-full items-center md:items-start">
+        <section className="md:max-w-[42rem] w-full items-center md:items-start">
           <h1 className="h1 py-4 text-center md:text-start">
             Shorten links{" "}
             <span className="italic text-[#2EB77A]">effortlessly</span>
@@ -61,8 +61,7 @@ const HeroSection = () => {
               alt="Illustration"
               width={800}
               height={800}
-              className=" max-w-full"
-              // style={{objectFit: 'contain'}}
+              className="max-w-full h-auto"
             />
           </div>
         </section>

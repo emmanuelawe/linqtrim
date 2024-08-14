@@ -151,7 +151,7 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
             onChange={(e) => setLongUrl(e.target.value)}
             placeholder="Paste long URL"
             required
-            className="flex dark:text-black pl-4 py-3 pr-6 border-2 border-gray-700/70 dark:border-white dark:bg-white md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-16 h-14 w-full rounded-s-xl"
+            className="flex pl-4 py-3 pr-6 border-2 border-gray-700/70 dark:border-white dark:bg-gray-900 dark:text-white dark:placeholder:text-white md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-16 h-14 w-full rounded-s-xl"
           />
           <input
             type="text"
@@ -159,7 +159,7 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
             onChange={(e) => setCustomUrl(e.target.value)}
             placeholder="yourname"
             required
-            className="flex dark:text-black pr-4 pl-2 py-3 border-2 border-gray-700/70 dark:border-white dark:bg-white text-center md:placeholder:text-base placeholder:italic placeholder:text-xs focus:outline-none md:h-16 h-14 w-[40%] md:w-[30%] rounded-e-xl 4"
+            className="flex pr-4 pl-2 py-3 border-2 border-gray-700/70 dark:border-white dark:bg-gray-900 dark:text-white dark:placeholder:text-white text-center md:placeholder:text-base placeholder:italic placeholder:text-xs focus:outline-none md:h-16 h-14 w-[40%] md:w-[30%] rounded-e-xl 4"
           />
         </div>
         <button type="submit" className="button w-full md:w-auto">
@@ -236,6 +236,7 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
                   <a
                     href={url.short_url}
                     className="text-[#2EB77A] font-medium underline"
+                    target="_blank"
                   >
                     {url.short_url}
                   </a>

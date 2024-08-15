@@ -15,14 +15,14 @@ const BriefDescription = () => {
             <br /> Link Management Solutions.
           </h2>
           <p className="text-white text-justify text-sm md:text-base md:w-[80%] w-full">
-            Linqtrim goes beyond being a simple URL shortener; it&apos;s a
-            full-featured Link Shortening and Management Platform. With
-            Linqtrim, you can create branded short links using your own custom
-            domain. Perfect for bloggers, marketers, affiliates, and businesses
-            of any size, Linqtrim offers total control over your short links.
-            Its features include an advanced URL Shortener, Link Analytics, and
-            QR codes. Use Linqtrim to maximize your links&apos; potential and
-            enhance your online presence.
+            Linqtrim goes beyond being a simple URL shortener; it&apos;s a Link
+            Shortening and Management Platform. With Linqtrim, you can create
+            branded short links using your own custom label. Perfect for
+            bloggers, marketers, affiliates, and businesses of any size,
+            Linqtrim offers total control over your short links. Its features
+            include an advanced URL Shortener, Link Analytics, and QR codes. Use
+            Linqtrim to maximize your links&apos; potential and enhance your
+            online presence.
           </p>
           <Link href="/">
             <button className="bdbutton text-center self-center md:text-left my-6">

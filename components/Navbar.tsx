@@ -44,7 +44,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
         showNavbar ? "" : "hidden"
       } ${
         isScrolled
-          ? "fixed top-0 left-0 right-0 z-50 bg-[#FAFAFA]/90 dark:bg-[#111212]/90 ease-in-out"
+          ? "fixed top-0 left-0 right-0 z-50 bg-[#FAFAFA]/90 dark:bg-[#111212]/90 ease-in-out backdrop-blur-sm"
           : "relative"
       }`}
     >

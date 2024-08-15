@@ -47,15 +47,18 @@ const SignupForm = () => {
   return (
     <main
       aria-label="Signup Form"
-      className="flex flex-col items-center justify-center p-6 md:p-10 bg-white dark:bg-gray-900 w-full max-w-md md:max-w-lg h-auto rounded-xl shadow-lg"
+      className="flex flex-col justify-center p-6 md:p-10 bg-white dark:bg-gray-900 w-full max-w-md md:max-w-lg h-auto rounded-xl shadow-lg"
     >
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-white text-left">
         Sign Up
       </h2>
       <p className="mt-2 text-gray-600 dark:text-gray-400">
         Create an account in seconds
       </p>
-      <form onSubmit={handleSubmit(onSubmit)} className="w-full mt-6 space-y-6">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-full mt-6 space-y-6 items-center"
+      >
         <div>
           <label
             htmlFor="email"
@@ -131,7 +134,7 @@ const SignupForm = () => {
           </Button>
         )}
       </form>
-      <div className="flex mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
+      <div className="flex mt-4 self-center text-center text-sm text-gray-600 dark:text-gray-400">
         Already have an account?{" "}
         <Link href="/login">
           <p className="ml-1 font-semibold text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-500">

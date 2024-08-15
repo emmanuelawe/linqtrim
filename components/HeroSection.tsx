@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/server";
+import AnimateGif from "./AnimateGif";
 
 const HeroSection = async () => {
   const supabase = createClient();
@@ -72,13 +73,14 @@ const HeroSection = async () => {
           className="hidden md:flex md:w-1/2"
         >
           <div>
-            <Image
+            <AnimateGif src='https://www.icegif.com/wp-content/uploads/2023/09/icegif-509.gif' alt='Analytics' />
+            {/* <Image
               src="/illustration.png"
               alt="Illustration"
               width={800}
               height={800}
               className="max-w-full h-auto"
-            />
+            /> */}
           </div>
         </section>
       </div>

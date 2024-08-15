@@ -159,7 +159,7 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
             onChange={(e) => setLongUrl(e.target.value)}
             placeholder="Paste long URL"
             required
-            className="flex md:-ml-4 pl-4 py-3 pr-6 border-2  shadow-md border-gray-700/70 dark:border-white dark:bg-gray-900 dark:text-white dark:placeholder:text-white md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-16 h-14 w-full rounded-s-xl"
+            className="flex md:-ml-4 -ml-2 pl-4 py-3 pr-6 border-2  shadow-md border-gray-700/70 dark:border-white dark:bg-gray-900 dark:text-white dark:placeholder:text-white md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-16 h-14 w-full rounded-s-xl"
           />
           <label htmlFor="yourlabel" />
           <input

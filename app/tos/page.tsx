@@ -2,7 +2,7 @@ const TOS = () => {
   return (
     <main
       aria-label="Terms of Service"
-      className="max-w-4xl mx-auto mt-20 md:mt-40 p-6"
+      className="max-w-4xl mx-auto mt-20 md:mt-40 px-4 py-8"
     >
       <h1 className="text-3xl font-bold mb-4 dark:text-white">
         Linqtrim Terms of Service

@@ -2,9 +2,9 @@ const CookiePolicy = () => {
   return (
     <main
       aria-label="Cookie Policy"
-      className="flex flex-col mt-20 md:mt-40 items-center px-4 py-8 min-h-screen"
+      className="max-w-4xl mx-auto mt-20 md:mt-40 px-4 py-8"
     >
-      <div className="max-w-4xl w-full p-6">
+      <div className="">
         <h1 className="text-3xl font-semibold text-gray-900 mb-6 dark:text-white">
           Linqtrim Cookie Policy
         </h1>
@@ -29,7 +29,7 @@ const CookiePolicy = () => {
           on our Site or services, please send us a detailed message to:{" "}
           <a
             href="mailto:privacy@linqtrim.com"
-            className="text-blue-600 hover:underline text-justify"
+            className="text-[#2EB77A] hover:underline text-justify"
           >
             privacy@linqtrim.com
           </a>
@@ -137,21 +137,21 @@ const CookiePolicy = () => {
           visiting the Digital Advertising Alliance’s Consumer Choice Page (
           <a
             href="http://www.aboutads.info/choices/"
-            className="text-blue-600 hover:underline"
+            className="text-[#2EB77A] hover:underline"
           >
             http://www.aboutads.info/choices/
           </a>
           ). If you wish to opt out of interest-based advertising click here (
           <a
             href="https://preferences-mgr.trustarc.com/"
-            className="text-blue-600 hover:underline"
+            className="text-[#2EB77A] hover:underline"
           >
             https://preferences-mgr.trustarc.com/
           </a>
           ) or if located in the European Union click here (
           <a
             href="https://www.youronlinechoices.eu/"
-            className="text-blue-600 hover:underline"
+            className="text-[#2EB77A] hover:underline"
           >
             https://www.youronlinechoices.eu/
           </a>
@@ -189,7 +189,7 @@ const CookiePolicy = () => {
           with your browser or Linqtrim account. Cookies on Linqtrim.com:{" "}
           <a
             href="https://www.linqtrim.com/cookie-settings"
-            className="text-blue-600 hover:underline"
+            className="text-[#2EB77A] hover:underline"
           >
             https://www.linqtrim.com/cookie-settings
           </a>
@@ -208,7 +208,7 @@ const CookiePolicy = () => {
           Cookie Policy, please contact us at{" "}
           <a
             href="mailto:privacy@linqtrim.com"
-            className="text-blue-600 hover:underline"
+            className="text-[#2EB77A] hover:underline"
           >
             privacy@linqtrim.com
           </a>

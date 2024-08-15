@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
 
 export default async function Dashboard() {
-  await new Promise((resolve) => setTimeout(resolve, 2000))
+  await new Promise((resolve) => setTimeout(resolve, 2000));
 
   const supabase = createClient();
 
@@ -37,7 +37,7 @@ export default async function Dashboard() {
   // FETCH ANALYTICS OF AUTHENTICATED USER
   const { data: analytics, error: analyticsError } = await supabase
     .from("analytics")
-    .select("*")
+    .select("*");
 
   if (error) {
     console.error("Error fetching Analytics", analyticsError);

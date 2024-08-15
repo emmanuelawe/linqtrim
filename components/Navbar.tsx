@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
@@ -38,16 +38,21 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
   }, []);
 
   return (
-    <div
-      className={`transition-transform duration-300 ${showNavbar ? '' : 'hidden'} ${
-        isScrolled ? 'fixed top-0 left-0 right-0 z-50 bg-[#FAFAFA]/90 dark:bg-[#111212]/90 ease-in-out' : 'relative'
+    <nav
+      aria-label="Main navigation"
+      className={`transition-transform duration-300 ${
+        showNavbar ? "" : "hidden"
+      } ${
+        isScrolled
+          ? "fixed top-0 left-0 right-0 z-50 bg-[#FAFAFA]/90 dark:bg-[#111212]/90 ease-in-out"
+          : "relative"
       }`}
     >
       <main className="md:px-0 md:mx-auto md:container mx-4">
         <div className="flex h-24 justify-between items-center">
           {/* LEFT */}
           <Link href="/">
-            <section>
+            <section aria-label="Linqtrim Logo">
               <Image
                 src="/Linqtrimlogo.png"
                 width={200}
@@ -60,20 +65,30 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
 
           {/* RIGHT */}
           <section className="flex items-center gap-8">
-            <DarkMode />
-            <div className="md:hidden flex">
+            <div aria-label="Dark mode toggle">
+              <DarkMode />
+            </div>
+            <div aria-label="Mobile menu" className="md:hidden flex">
               <MobileMenu user={user} />
             </div>
-            <div className="hidden md:flex space-x-8 items-center">
+            <ul
+              aria-label="Navigation elements"
+              className="hidden md:flex space-x-8 items-center"
+            >
               {!user ? (
                 <>
-                  <Link href="/login">
+                  <Link href="/" aria-label="Home">
+                    <button className="button_borderb dark:text-white">
+                      Home
+                    </button>
+                  </Link>
+                  <Link href="/login" aria-label="Log in">
                     <button className="button_borderb dark:text-white">
                       Log In
                     </button>
                   </Link>
-                  <Link href="/signup">
-                    <Button size="lg" className="font-semibold">
+                  <Link href="/signup" aria-label="Get Started">
+                    <Button size="lg" className="font-semibold h-12">
                       Get Started
                     </Button>
                   </Link>
@@ -81,12 +96,12 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
               ) : (
                 <NavDropdown user={user} />
               )}
-            </div>
+            </ul>
           </section>
         </div>
       </main>
       <p className="border-b border-gray-200 w-full" />
-    </div>
+    </nav>
   );
 };
 

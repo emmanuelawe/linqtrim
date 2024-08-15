@@ -3,10 +3,8 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { cookies } from "next/headers";
-import { createServerClient } from "@supabase/ssr";
 import { createClient } from "@/utils/supabase/server";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -35,19 +33,26 @@ export default async function RootLayout({
   } = await supabase.auth.getUser();
 
   return (
-    <html lang="en">
-      <body
-        className={`overflow-x-hidden  w-full ${poppins.className}`}
-      >
+    <html lang="en" suppressHydrationWarning>
+      <body className={`overflow-x-hidden  w-full ${poppins.className}`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
+          {/* Skip to Main Link */}
+          <a
+            href="#main-content"
+            className="absolute top-[-3rem] left-2 w-full py-2 px-2 dark:text-white text-black text-center focus:top-4 focus:opacity-100 opacity-0 transition-all duration-300 focus:z-10 focus:relative"
+          >
+            Skip to Main Content
+          </a>
           <Navbar user={user} />
-            <main className="mx-4 min-h-screen">{children}</main>
-            <Footer />
+          <main id="main-content" className="mx-4 min-h-screen">
+            {children}
+          </main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

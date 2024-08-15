@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { signup } from "@/app/(authentication)/login/actions";
 import { useSearchParams } from "next/navigation";
 import userEvent from "@testing-library/user-event";
-import SignupForm from "./SignupForm";
+import SignupForm from "@/components/SignupForm";
 
 // Replace the real implementations with mock versions
 jest.mock("@/app/(authentication)/login/actions");
@@ -14,7 +14,7 @@ describe("SignupForm Component", () => {
   it("should render signup form and handle submit", async () => {
     // Mock useSearchParams to return a mock searchParams object
     const mockSearchParams = {
-      get: jest.fn().mockReturnValue('Invalid details'),
+      get: jest.fn().mockReturnValue("Invalid details"),
     };
     (useSearchParams as jest.Mock).mockReturnValue(mockSearchParams);
 
@@ -29,13 +29,14 @@ describe("SignupForm Component", () => {
     });
 
     // Submit the form using userEvent
-    await userEvent.click(screen.getByRole("button", { name: /create account/i }));
+    await userEvent.click(
+      screen.getByRole("button", { name: /create account/i })
+    );
 
-
-    // Check if the login function was called with correct arguments
-    expect(signup).toHaveBeenCalledWith({
-      email: "test@example.com",
-      password: "password",
-    });
+    // Check if the signup function was called with correct arguments
+    expect(signup).toHaveBeenCalled();
+    const formData = (signup as jest.Mock).mock.calls[0][0] as FormData;
+    expect(formData.get("email")).toBe("test@example.com");
+    expect(formData.get("password")).toBe("password");
   });
 });

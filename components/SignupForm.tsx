@@ -23,8 +23,8 @@ const SignupForm = () => {
   const handleGoogle = async () => {
     setIsGoogleLoading(true);
     await signInWithGoogle();
-     // Simulate a delay (e.g., for navigation or API call)
-     setTimeout(() => {
+    // Simulate a delay (e.g., for navigation or API call)
+    setTimeout(() => {
       setIsLoading(false);
     }, 2000);
   };
@@ -45,7 +45,10 @@ const SignupForm = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-6 md:p-10 bg-white dark:bg-gray-900 w-full max-w-md md:max-w-lg h-auto rounded-xl shadow-lg">
+    <main
+      aria-label="Signup Form"
+      className="flex flex-col items-center justify-center p-6 md:p-10 bg-white dark:bg-gray-900 w-full max-w-md md:max-w-lg h-auto rounded-xl shadow-lg"
+    >
       <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
         Sign Up
       </h2>
@@ -136,7 +139,7 @@ const SignupForm = () => {
           </p>
         </Link>
       </div>
-    </div>
+    </main>
   );
 };
 

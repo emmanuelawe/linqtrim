@@ -20,12 +20,11 @@ const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
 
-
   const handleGoogle = async () => {
     setIsGoogleLoading(true);
     await signInWithGoogle();
-     // Simulate a delay (e.g., for navigation or API call)
-     setTimeout(() => {
+    // Simulate a delay (e.g., for navigation or API call)
+    setTimeout(() => {
       setIsLoading(false);
     }, 2000);
   };
@@ -45,10 +44,11 @@ const LoginForm = () => {
     await login(formData);
   };
 
-
-
   return (
-    <div className="flex flex-col items-center justify-center p-6 md:p-10 bg-white dark:bg-gray-900 w-full max-w-md md:max-w-lg h-auto rounded-xl shadow-lg">
+    <main
+      aria-label="Login Form"
+      className="flex flex-col items-center justify-center p-6 md:p-10 bg-white dark:bg-gray-900 w-full max-w-md md:max-w-lg h-auto rounded-xl shadow-lg"
+    >
       <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
         Log In
       </h2>
@@ -109,19 +109,27 @@ const LoginForm = () => {
           </Button>
         )}
 
-        {isGoogleLoading ? (<GoogleLoader />) : (
-        <Button
-          onClick={handleGoogle}
-          variant="outline"
-          size="lg"
-          type="button"
-          className="w-full mt-4 py-2 border border-gray-300 text-gray-700 dark:text-white bg-white hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700"
-        >
-          <div className="flex items-center">
-            <Image src="/google.png" alt="Google Logo" width={18} height={18} className="mr-2" />
-            Sign In with Google
-          </div>
-        </Button>
+        {isGoogleLoading ? (
+          <GoogleLoader />
+        ) : (
+          <Button
+            onClick={handleGoogle}
+            variant="outline"
+            size="lg"
+            type="button"
+            className="w-full mt-4 py-2 border border-gray-300 text-gray-700 dark:text-white bg-white hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700"
+          >
+            <div className="flex items-center">
+              <Image
+                src="/google.png"
+                alt="Google Logo"
+                width={18}
+                height={18}
+                className="mr-2"
+              />
+              Sign In with Google
+            </div>
+          </Button>
         )}
       </form>
       <div className="flex mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
@@ -132,7 +140,7 @@ const LoginForm = () => {
           </p>
         </Link>
       </div>
-    </div>
+    </main>
   );
 };
 

@@ -11,14 +11,13 @@ import { User } from "@supabase/supabase-js";
 interface NavDDProps {
   user: User | null;
 }
-const NavDropdown: React.FC<NavDDProps> = ({user}) => {
-
+const NavDropdown: React.FC<NavDDProps> = ({ user }) => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const avatar = "";
 
-   // Extract the part before '@' in the email
-   const getEmailName = (email: string | null) => {
-    return email ? email.split('@')[0] : 'Guest';
+  // Extract the part before '@' in the email
+  const getEmailName = (email: string | null) => {
+    return email ? email.split("@")[0] : "Guest";
   };
 
   return (
@@ -38,10 +37,10 @@ const NavDropdown: React.FC<NavDDProps> = ({user}) => {
       {dropdownVisible && (
         <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
           <div className="w-full block items-center px-3 py-2 font-semibold text-left text-black">
-            Hi, {" "}
-           <span className="uppercase text-[#2eb77a] w-[70%]">
-            {getEmailName(user?.email || 'Guest')}
-            </span> 
+            Hi,{" "}
+            <span className="uppercase text-[#2eb77a] w-[70%]">
+              {getEmailName(user?.email || "Guest")}
+            </span>
           </div>
           <DropdownMenuSeparator />
 

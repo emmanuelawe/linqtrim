@@ -1,6 +1,9 @@
 const PrivacyPolicy = () => {
   return (
-    <main className="max-w-4xl mx-auto mt-20 md:mt-40 px-4 py-8">
+    <main
+      aria-label="Privacy Policy"
+      className="max-w-4xl mx-auto mt-20 md:mt-40 px-4 py-8"
+    >
       <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
         Linqtrim Privacy Policy
       </h1>

@@ -108,7 +108,7 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
       ]);
       setIsLoading(false);
     } else {
-      alert('URL already exists. Try a different URL.');
+      alert("URL already exists. Try a different URL.");
     }
   };
 
@@ -142,29 +142,42 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
   };
 
   return (
-    <main className="container mx-auto px-4 md:px-0 mt-10">
+    <main
+      aria-label="Dashboard"
+      className="container mx-auto px-4 md:px-0 mt-10"
+    >
       <h1 className="text-2xl font-bold mb-6">Your Dashboard</h1>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 mb-10">
-        <div className="flex rounded-xl w-full shadow-md gap-2">
+        <div className="flex rounded-xl w-full gap-2">
+          <label htmlFor="longurl" />
           <input
+            id="longurl"
             type="text"
+            aria-describedby="paste long url"
             value={longUrl}
             onChange={(e) => setLongUrl(e.target.value)}
             placeholder="Paste long URL"
             required
-            className="flex pl-4 py-3 pr-6 border-2 border-gray-700/70 dark:border-white dark:bg-gray-900 dark:text-white dark:placeholder:text-white md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-16 h-14 w-full rounded-s-xl"
+            className="flex -ml-4 pl-4 py-3 pr-6 border-2  shadow-md border-gray-700/70 dark:border-white dark:bg-gray-900 dark:text-white dark:placeholder:text-white md:placeholder:text-base placeholder:text-sm focus:outline-none md:h-16 h-14 w-full rounded-s-xl"
           />
+          <label htmlFor="yourlabel" />
           <input
+            id="yourlabel"
             type="text"
+            aria-describedby="yourlabel"
             value={customUrl}
             onChange={(e) => setCustomUrl(e.target.value)}
-            placeholder="yourname"
+            placeholder="yourlabel"
             required
-            className="flex pr-4 pl-2 py-3 border-2 border-gray-700/70 dark:border-white dark:bg-gray-900 dark:text-white dark:placeholder:text-white text-center md:placeholder:text-base placeholder:italic placeholder:text-xs focus:outline-none md:h-16 h-14 w-[40%] md:w-[30%] rounded-e-xl 4"
+            className="flex pr-4 pl-2 py-3 border-2  shadow-md border-gray-700/70 dark:border-white dark:bg-gray-900 dark:text-white dark:placeholder:text-white text-center md:placeholder:text-base placeholder:italic placeholder:text-xs focus:outline-none md:h-16 h-14 w-[40%] md:w-[30%] rounded-e-xl 4"
           />
         </div>
-        <button type="submit" className="button w-full md:w-auto">
+        <button
+          aria-label="Shorten!"
+          type="submit"
+          className="button w-full md:w-auto"
+        >
           Shorten URL
         </button>
       </form>
@@ -214,10 +227,12 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
                     />
                   ) : (
                     <div className="flex">
-                
-                    <p className="border-l-4 border-black"/>
-                    <ReactMarkdown className='text-[#2EB77A] ml-2 font-bold'>{url.description || ""}</ReactMarkdown>
-                 </div> )}
+                      <p className="border-l-4 border-black" />
+                      <ReactMarkdown className="text-[#2EB77A] ml-2 font-bold">
+                        {url.description || ""}
+                      </ReactMarkdown>
+                    </div>
+                  )}
                   <div className="space-x-4 mt-2">
                     <button
                       onClick={() =>

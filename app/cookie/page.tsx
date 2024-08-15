@@ -1,6 +1,9 @@
 const CookiePolicy = () => {
   return (
-    <main className="flex flex-col mt-20 md:mt-40 items-center px-4 py-8 min-h-screen">
+    <main
+      aria-label="Cookie Policy"
+      className="flex flex-col mt-20 md:mt-40 items-center px-4 py-8 min-h-screen"
+    >
       <div className="max-w-4xl w-full p-6">
         <h1 className="text-3xl font-semibold text-gray-900 mb-6 dark:text-white">
           Linqtrim Cookie Policy

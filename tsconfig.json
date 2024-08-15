@@ -3,7 +3,7 @@
     "types": ["node", "jest", "@testing-library/react"],
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
-    "jsx": "preserve",  
+    "jsx": "preserve",
     "moduleResolution": "bundler",
     "allowJs": true,
     "skipLibCheck": true,
@@ -18,11 +18,18 @@
         "name": "next"
       }
     ],
-   "baseUrl": ".",  
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "jest.config.ts", "babel.config.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "jest.config.ts",
+    "babel.config.js"
+  ],
   "exclude": ["node_modules"]
 }

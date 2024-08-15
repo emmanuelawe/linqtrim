@@ -4,7 +4,10 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#2EB77A] pt-20 mt-20 md:mt-40 text-white">
+    <footer
+      aria-label="Footer"
+      className="bg-[#2EB77A] pt-20 mt-20 md:mt-40 text-white"
+    >
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-12">
           {/* LOGO SECTION */}

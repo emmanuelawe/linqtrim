@@ -14,7 +14,7 @@ describe("LoginForm Component", () => {
   it("should render login form and handle submit", async () => {
     // Mock useSearchParams to return a mock searchParams object
     const mockSearchParams = {
-      get: jest.fn().mockReturnValue('Invalid login'),
+      get: jest.fn().mockReturnValue("Invalid login"),
     };
     (useSearchParams as jest.Mock).mockReturnValue(mockSearchParams);
 
@@ -31,11 +31,10 @@ describe("LoginForm Component", () => {
     // Submit the form using userEvent
     await userEvent.click(screen.getByRole("button", { name: /log in/i }));
 
-
-    // Check if the login function was called with correct arguments
-    expect(login).toHaveBeenCalledWith({
-      email: "test@example.com",
-      password: "password",
-    });
+    // Check if the signup function was called with correct arguments
+    expect(login).toHaveBeenCalled();
+    const formData = (login as jest.Mock).mock.calls[0][0] as FormData;
+    expect(formData.get("email")).toBe("test@example.com");
+    expect(formData.get("password")).toBe("password");
   });
 });

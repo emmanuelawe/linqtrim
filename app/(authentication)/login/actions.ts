@@ -28,8 +28,6 @@ export async function login(formData: FormData) {
 export async function signup(formData: FormData) {
   const supabase = createClient();
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs !!! USE ZOD TO VALIDATE THIS
   const data = {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
@@ -54,23 +52,21 @@ export async function signOut() {
 export async function signInWithGoogle() {
   const supabase = createClient();
   const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: 'google',
+    provider: "google",
     options: {
       redirectTo: process.env.NEXT_PUBLIC_REDIRECT_URL,
       queryParams: {
-        access_type: 'offline',
-        prompt: 'consent',
+        access_type: "offline",
+        prompt: "consent",
       },
     },
-  })
+  });
 
   if (error) {
     redirect("/login?message=Google Sign in failed");
   }
-  
+
   if (data.url) {
-    redirect(data.url);  // Redirect to the OAuth consent page
-  } 
-
-
+    redirect(data.url); // Redirect to the OAuth consent page
+  }
 }

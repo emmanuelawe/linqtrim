@@ -29,7 +29,7 @@ export async function POST(request: Request) {
   const alias = customUrl;
   const url = new URL(request.url); // Parse the request url
   const shortUrl = `${url.origin}/${alias}`;
-  
+
   const {
     data: { user },
     error: userError,

@@ -32,7 +32,7 @@
   }
 
   .dark {
-    --background: 180,3%,7%;
+    --background: 180, 3%, 7%;
     --foreground: 210 20% 98%;
     --card: 224 71.4% 4.1%;
     --card-foreground: 210 20% 98%;
@@ -64,7 +64,7 @@
     @apply border-border scrollbar-hide;
   }
   body {
-    @apply bg-background text-foreground 
+    @apply bg-background text-foreground;
   }
 }
 
@@ -81,7 +81,6 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
-
 
 @layer utilities {
   .text-balance {
@@ -118,5 +117,5 @@
 }
 
 .bdbutton {
-  @apply cursor-pointer bg-white md:text-xl text-lg transition ease-in-out delay-100  hover:scale-105 hover:bg-[#038C5A] duration-300 md:py-4 md:p-16 py-2 px-10 text-[#2EB77A] hover:text-white hover:border-white hover:border hover:rounded-xl font-semibold rounded-md items-center;
+  @apply cursor-pointer bg-white md:text-xl text-lg transition ease-in-out delay-100 hover:bg-[#038C5A] duration-300 md:py-4 md:p-16 py-2 px-10 text-[#2EB77A] hover:text-white hover:border-white hover:border hover:rounded-xl font-semibold rounded-md items-center;
 }

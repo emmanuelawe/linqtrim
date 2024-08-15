@@ -1,4 +1,4 @@
-import { POST } from "@/app/(api)/shorten/route";
+import { POST } from "@/app/api/shorten/route";
 import { createClient } from "@/utils/supabase/server";
 import { headers } from "next/headers";
 import { userAgent, NextResponse } from "next/server";
@@ -21,7 +21,9 @@ jest.mock("@/utils/supabase/server", () => ({
 }));
 
 jest.mock("next/headers", () => ({
-  headers: jest.fn().mockReturnValue(new Map([["x-forwarded-for", "121.0.0.1"]])),
+  headers: jest
+    .fn()
+    .mockReturnValue(new Map([["x-forwarded-for", "121.0.0.1"]])),
 }));
 
 jest.mock("next/server", () => ({
@@ -58,7 +60,9 @@ describe("URL Shortener API", () => {
     // Assertions to validate the expected behavior
     expect(data.shortUrl).toBe("http://localhost:3000/custom-id");
     expect(data.qrCodeUrl).toBe("mock-qr-code-url");
-    expect(QRCode.toDataURL).toHaveBeenCalledWith("http://localhost:3000/custom-id");
+    expect(QRCode.toDataURL).toHaveBeenCalledWith(
+      "http://localhost:3000/custom-id"
+    );
     expect(createClient).toHaveBeenCalled();
   });
 });

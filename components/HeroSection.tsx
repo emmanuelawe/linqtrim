@@ -4,26 +4,40 @@ import { createClient } from "@/utils/supabase/server";
 
 const HeroSection = async () => {
   const supabase = createClient();
-  const {data: {user}} = await supabase.auth.getUser()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   return (
-    <main className="flex flex-col md:flex-row mt-20 md:mt-40 md:mx-auto md:container">
-      <div className="flex items-center justify-between w-full gap-6">
+    <section
+      aria-label="Hero section"
+      className="flex flex-col md:flex-row mt-20 md:mt-40 md:mx-auto md:container"
+    >
+      <div className="flex items-center justify-between w-full gap-14">
         {/* LEFT */}
         <section className="md:max-w-[42rem] w-full items-center md:items-start">
-          <h1 className="h1 py-4 text-center md:text-start">
+          <h1
+            aria-label="Hero section heading"
+            className="h1 py-4 text-center md:text-start"
+          >
             Shorten links{" "}
             <span className="italic text-[#2EB77A]">effortlessly</span>
             <br /> and stay in control
           </h1>
-          <p className="md:text-justify text-center md:text-base text-xs">
+          <p
+            aria-label="Hero section description"
+            className="md:text-justify text-center md:text-base text-xs"
+          >
             Ultimate URL Shortening Tool: Simplify link management, analysis,
             and branding. Features include deep links, QR codes, bio links,
             surveys, and more. Effortlessly start shortening and tracking your
             links.
           </p>
 
-          <div className="mt-8 flex md:justify-between justify-start items-center gap-4">
+          <div
+            aria-label="Action buttons"
+            className="mt-8 flex md:justify-between justify-start items-center gap-4"
+          >
             {user ? (
               <div className="flex w-full">
                 <Link
@@ -51,8 +65,12 @@ const HeroSection = async () => {
             )}
           </div>
         </section>
+
         {/* RIGHT */}
-        <section className="hidden md:flex md:w-1/2">
+        <section
+          aria-label="Hero illustration"
+          className="hidden md:flex md:w-1/2"
+        >
           <div>
             <Image
               src="/illustration.png"
@@ -64,7 +82,7 @@ const HeroSection = async () => {
           </div>
         </section>
       </div>
-    </main>
+    </section>
   );
 };
 

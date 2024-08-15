@@ -1,17 +1,31 @@
-import { POST } from "@/app/(api)/update-description/route";
+import { POST } from "@/app/api/update-description/route";
 import { createClient } from "@/utils/supabase/server";
 import { NextResponse } from "next/server";
 
 // Replace the real implementations with mock versions
 jest.mock("@/utils/supabase/server", () => ({
   createClient: jest.fn(() => ({
-    from: jest.fn().mockReturnThis(),
-    update: jest.fn().mockReturnThis(),
-    eq: jest.fn().mockReturnThis(),
-    single: jest.fn().mockResolvedValue({ data: {}, error: null }),
+    auth: {
+      getUser: jest
+        .fn()
+        .mockResolvedValue({ data: { user: { id: "user-id" } }, error: null }),
+    },
+    from: jest.fn(() => ({
+      update: jest.fn(() => ({
+        eq: jest.fn(() => ({
+          eq: jest.fn(() => ({
+            single: jest
+              .fn()
+              .mockResolvedValue({
+                data: { id: "url-id", description: "new description" },
+                error: null,
+              }),
+          })),
+        })),
+      })),
+    })),
   })),
 }));
-
 
 jest.mock("next/server", () => ({
   NextResponse: {

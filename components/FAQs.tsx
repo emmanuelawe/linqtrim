@@ -7,10 +7,15 @@ import {
 
 const FAQs = () => {
   return (
-    <main className="md:mx-auto md:container">
-      <div className="text-center mb-6">
-        <h3 className="text-2xl font-bold">FAQs</h3>
-        <p className="text-lg font-semibold text-[#2EB77A]">Frequently Asked Questions</p>
+    <section
+      aria-label="Frequently Asked Questions"
+      className="md:mx-auto md:container"
+    >
+      <div className="text-center mb-10">
+        <h3 className="md:text-4xl text-2xl font-bold">FAQs</h3>
+        <p className="md:text-xl text-lg font-semibold text-[#2EB77A]">
+          Frequently Asked Questions
+        </p>
       </div>
       <div>
         <Accordion type="single" collapsible className="w-full">
@@ -65,7 +70,7 @@ const FAQs = () => {
           </AccordionItem>
         </Accordion>
       </div>
-    </main>
+    </section>
   );
 };
 

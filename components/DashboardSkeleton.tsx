@@ -26,7 +26,7 @@ const DashboardSkeleton = () => {
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex flex-col w-[50%]">
               <Skeleton className="p-4  border-gray-300 rounded-xl bg-transparent mb-2" />
-              <div className="space-x-4">
+              <div className="flex space-x-4">
                 <Skeleton className="w-32 h-10" />
                 <Skeleton className="w-24 h-10" />
               </div>
@@ -48,7 +48,7 @@ const DashboardSkeleton = () => {
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex flex-col w-[50%]">
               <Skeleton className="p-4  border-gray-300 rounded-xl bg-transparent mb-2" />
-              <div className="space-x-4">
+              <div className="flex space-x-4">
                 <Skeleton className="w-32 h-10" />
                 <Skeleton className="w-24 h-10" />
               </div>
@@ -70,7 +70,7 @@ const DashboardSkeleton = () => {
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex flex-col w-[50%]">
               <Skeleton className="p-4  border-gray-300 rounded-xl bg-transparent mb-2" />
-              <div className="space-x-4">
+              <div className="flex space-x-4">
                 <Skeleton className="w-32 h-10" />
                 <Skeleton className="w-24 h-10" />
               </div>
@@ -92,7 +92,7 @@ const DashboardSkeleton = () => {
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex flex-col w-[50%]">
               <Skeleton className="p-4  border-gray-300 rounded-xl bg-transparent mb-2" />
-              <div className="space-x-4">
+              <div className="flex space-x-4">
                 <Skeleton className="w-32 h-10" />
                 <Skeleton className="w-24 h-10" />
               </div>

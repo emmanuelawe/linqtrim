@@ -3,35 +3,42 @@ import InputURL from "@/components/InputURL";
 import { useRouter } from "next/navigation";
 import userEvent from "@testing-library/user-event";
 import Image from "next/image";
+import { User } from "@supabase/supabase-js";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
 }));
 
-
-
 // Mock the next/image component to avoid dealing with image optimization in tests
 jest.mock("next/image", () => {
-    const MockedImage = (props: any) => <img {...props} />;
-    MockedImage.displayName = "Image"; // Add display name here
-    return MockedImage;
-  });
+  const MockedImage = (props: any) => <img {...props} />;
+  MockedImage.displayName = "Image"; // Add display name here
+  return MockedImage;
+});
 
 describe("InputURL Component", () => {
+  const mockUser: User = {
+    id: "123",
+    app_metadata: { provider: "google" },
+    user_metadata: { full_name: "Test User" },
+    aud: "authenticated",
+    created_at: new Date().toISOString(),
+  };
+
   it("should redirect to login if user is not authenticated", async () => {
     const pushMock = jest.fn();
     (useRouter as jest.Mock).mockReturnValue({ push: pushMock });
 
-    render(<InputURL />);
+    render(<InputURL user={null} />);
 
     fireEvent.change(screen.getByPlaceholderText(/paste long url/i), {
       target: { value: "https://example.com" },
     });
 
-    fireEvent.change(screen.getByPlaceholderText(/yourname/i), {
+    fireEvent.change(screen.getByPlaceholderText(/yourlabel/i), {
       target: { value: "custom-id" },
     });
-    
+
     // Submit the form using userEvent
     await userEvent.click(screen.getByRole("button", { name: /shorten!/i }));
 
@@ -53,13 +60,13 @@ describe("InputURL Component", () => {
 
     global.fetch = fetchMock;
 
-    render(<InputURL />);
+    render(<InputURL user={mockUser} />);
 
     fireEvent.change(screen.getByPlaceholderText(/paste long url/i), {
       target: { value: "https://example.com" },
     });
 
-    fireEvent.change(screen.getByPlaceholderText(/unique id/i), {
+    fireEvent.change(screen.getByPlaceholderText(/yourlabel/i), {
       target: { value: "custom-id" },
     });
 

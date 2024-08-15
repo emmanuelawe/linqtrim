@@ -5,8 +5,10 @@ import FAQs from "@/components/FAQs";
 import { createClient } from "@/utils/supabase/server";
 
 export default async function Home() {
-  const supabase = createClient()
-  const {data: {user}} = await supabase.auth.getUser()
+  const supabase = createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   return (
     <main className="flex flex-col gap-20 md:gap-40 w-full ">
       <HeroSection />

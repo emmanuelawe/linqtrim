@@ -1,7 +1,7 @@
 // jest.setup.ts
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
 
-import { jest } from '@jest/globals';
+import { jest } from "@jest/globals";
 
 // Explicitly type the global.fetch mock
 global.fetch = jest.fn() as jest.MockedFunction<typeof fetch>;

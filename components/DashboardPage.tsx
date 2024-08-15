@@ -108,7 +108,7 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
       ]);
       setIsLoading(false);
     } else {
-      alert(`Error: ${data.error}`);
+      alert('URL already exists. Try a different URL.');
     }
   };
 
@@ -126,6 +126,7 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
   };
 
   const handleDelete = async (id: number) => {
+    setIsLoading(true);
     const response = await fetch("/api/delete-url", {
       method: "POST",
       body: JSON.stringify({ id }),
@@ -137,6 +138,7 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
     } else {
       alert(`Error: ${data.error}`);
     }
+    setIsLoading(false);
   };
 
   return (
@@ -173,7 +175,7 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
             <span className="font-bold text-xl mb-2 text-[#2EB77A]">
               Shortened URL:
             </span>
-            <span className="font-medium bg-gray-50 p-4 rounded-xl">
+            <span className="font-medium bg-gray-50 dark:text-black p-4 rounded-xl">
               {shortUrl}
             </span>
           </div>
@@ -199,10 +201,10 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
           localUrls.map((url) => (
             <div
               key={url.id}
-              className="bg-white rounded-xl shadow-md p-6 mb-4"
+              className="bg-white rounded-xl shadow-md p-6 mb-4 w-full"
             >
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div className="flex flex-col w-[50%]">
+              <div className="flex flex-col md:flex-row md:items-center gap-4 justify-between  mt-2">
+                <div className="flex flex-col w-full md:w-[50%]">
                   {editMode[url.id] ? (
                     <textarea
                       value={description}
@@ -211,16 +213,19 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
                       className="p-4 dark:text-black border-2 border-gray-300 rounded-xl bg-transparent mb-2"
                     />
                   ) : (
-                    <ReactMarkdown>{url.description || ""}</ReactMarkdown>
-                  )}
-                  <div className="space-x-4">
+                    <div className="flex">
+                
+                    <p className="border-l-4 border-black"/>
+                    <ReactMarkdown className='text-[#2EB77A] ml-2 font-bold'>{url.description || ""}</ReactMarkdown>
+                 </div> )}
+                  <div className="space-x-4 mt-2">
                     <button
                       onClick={() =>
                         editMode[url.id]
                           ? handleUpdateDescription(url.id)
                           : handleEditToggle(url.id, url.description || "")
                       }
-                      className="button_borderb mt-2 self-start"
+                      className="button_borderb self-start"
                     >
                       {editMode[url.id] ? "Save" : "Add Description"}
                     </button>
@@ -265,7 +270,7 @@ const DashboardPage: React.FC<DashboardProps> = ({ urls, analytics }) => {
                   </div>
                   <button
                     onClick={() => toggleAnalytics(url.id)}
-                    className="button"
+                    className="button mt-2 md:mt-0"
                   >
                     {showAnalytics[url.id]
                       ? "Hide Analytics"

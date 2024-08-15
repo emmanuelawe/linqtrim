@@ -1,4 +1,4 @@
-import { POST } from "@/app/api/shorten/route";
+import { POST } from "@/app/(api)/shorten/route";
 import { createClient } from "@/utils/supabase/server";
 import { headers } from "next/headers";
 import { userAgent, NextResponse } from "next/server";

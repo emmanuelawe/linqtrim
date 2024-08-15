@@ -94,7 +94,7 @@
 }
 
 .button {
-  @apply cursor-pointer bg-[#2EB77A] text-white font-semibold rounded-md p-3 items-center transition ease-in-out delay-100 hover:bg-[#038C5A] duration-300;
+  @apply cursor-pointer bg-[#2EB77A]  text-white font-semibold rounded-md p-3 items-center transition ease-in-out delay-100 hover:bg-[#038C5A] duration-300;
 }
 
 .button_stroke {

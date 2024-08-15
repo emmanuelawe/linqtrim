@@ -1,8 +1,8 @@
 const TOS = () => {
   return (
     <main className="max-w-4xl mx-auto mt-20 md:mt-40 p-6">
-      <h1 className="text-3xl font-bold mb-4">Linqtrim Terms of Service</h1>
-      <p className="text-gray-700 mb-6 text-justify">
+      <h1 className="text-3xl font-bold mb-4 dark:text-white">Linqtrim Terms of Service</h1>
+      <p className="text-gray-700 mb-6 text-justify dark:text-white dark:text-white">
         Linqtrim, Inc. and its affiliates (collectively “Linqtrim,” “we” or “our”)
         provide URL shortening, custom-branded link, link management,
         link-in-bio, QR code and analytics products and services to our users
@@ -32,9 +32,9 @@ const TOS = () => {
         PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS ACTION OR
         REPRESENTATIVE PROCEEDING.
       </p>
-      <h2 className="text-2xl font-semibold mb-4">1. SCOPE & MODIFICATIONS</h2>
-      <h3 className="text-xl font-semibold mb-2">1.1 Modifications</h3>
-      <p className="text-gray-700 mb-6 text-justify">
+      <h2 className="text-2xl font-semibold mb-4 dark:text-white">SCOPE & MODIFICATIONS</h2>
+      <h3 className="text-xl font-semibold mb-2 dark:text-white">Modifications</h3>
+      <p className="text-gray-700 mb-6 text-justify dark:text-white">
         Linqtrim reserves the right, in its sole discretion, to modify or replace
         this Agreement at any time. If we modify this Agreement, we will post
         the modification on our site and update the “Last Updated” date at the
@@ -49,66 +49,18 @@ const TOS = () => {
         acceptance of those changes. If the modified Agreement is not acceptable
         to you, your only recourse is to cease using the Linqtrim Services.
       </p>
-      <h3 className="text-xl font-semibold mb-2">1.2 Service Changes</h3>
-      <p className="text-gray-700 mb-6 text-justify">
+      <h3 className="text-xl font-semibold mb-2 dark:text-white">Service Changes</h3>
+      <p className="text-gray-700 mb-6 text-justify dark:text-white">
         Linqtrim may add, remove, suspend, discontinue, modify or update the Linqtrim
         Services at any time, at its discretion. After the effective date of
         such a change, Linqtrim shall bear no obligation to run, provide or support
         legacy versions of any affected Linqtrim Services.
       </p>
-      <h3 className="text-xl font-semibold mb-2">1.3 Customer Support</h3>
-      <p className="text-gray-700 mb-6 text-justify">
+      <h3 className="text-xl font-semibold mb-2 dark:text-white">Customer Support</h3>
+      <p className="text-gray-700 mb-6 text-justify dark:text-white">
         Linqtrim provides a help center for all users. More details about
         additional support services can be found in the help center which is
         accessible through the platform.
-      </p>
-      <h2 className="text-2xl font-semibold mb-4">2. PAID ACCOUNTS</h2>
-      <h3 className="text-xl font-semibold mb-2">2.1 Fees</h3>
-      <p className="text-gray-700 mb-6 text-justify">
-        Linqtrim offers fee-based Linqtrim Services that provide additional features
-        and functionality. If you sign up for a paid account, you agree to pay
-        Linqtrim all applicable fees for the tier of Linqtrim Services according to
-        your selection. Fees are non-refundable except as required by law or as
-        otherwise specifically permitted in this Agreement.
-      </p>
-      <h3 className="text-xl font-semibold mb-2">2.2 Subscription Period</h3>
-      <p className="text-gray-700 mb-6 text-justify">
-        Paid account plans will be charged the rate stated at the time of
-        initial purchase on a recurring basis corresponding to the term of your
-        subscription until you cancel. Fees are subject to change and Linqtrim will
-        notify you of any pricing change prior to processing your next recurring
-        charge. You may cancel your paid account subscription at any time,
-        however, unless required by law, no refunds or credits will be provided
-        for any early termination or for any non-use of the Linqtrim Services. Linqtrim
-        reserves the right to update, change, modify or terminate your
-        subscription benefits at any time in its sole discretion.
-      </p>
-      <h3 className="text-xl font-semibold mb-2">2.3 Payment</h3>
-      <p className="text-gray-700 mb-6 text-justify">
-        You will pay Linqtrim on the payment interval selected. If not otherwise
-        specified, payments will be due immediately. You authorize Linqtrim to
-        charge you for all applicable fees on a recurring basis using your
-        selected payment method through Linqtrim’s online payments platform. By
-        providing a saved payment method (“Payment Method”) in your account, you
-        expressly acknowledge and authorize Linqtrim (or our third party online
-        payment processor) to charge you on a recurring basis corresponding to
-        the term of your subscription unless you cancel your paid account
-        subscription. You are responsible for any and all fees charged to your
-        Payment Method. You will provide complete and accurate billing and
-        contact information to Linqtrim. Linqtrim may make changes to the offered
-        Payment Method from time to time. It is your responsibility to update
-        your payment information if necessary due to such changes. Linqtrim may
-        suspend, downgrade or terminate the Services if Fees are past due. Unpaid
-        Fees are subject to a finance charge of one percent (1.5%) per month (18%
-        per annum), or the maximum permitted by law, whichever is lower. In
-        addition, Linqtrim will be entitled to recover its expenses for collection,
-        including reasonable attorneys’ fees. Failure to pay Fees or Renewal Fees
-        when due may lead to termination, cancellation or suspension of Services.
-        FOR THE AVOIDANCE OF DOUBT, LINQTRIM MAY SUBMIT PERIODIC CHARGES
-        CORRESPONDING TO THE TERM OF YOUR SELECTED SUBSCRIPTION WITHOUT FURTHER
-        AUTHORIZATION FROM YOU, UNTIL YOU AFFIRMATIVELY CANCEL YOUR SUBSCRIPTION
-        SERVICES OR NOTIFY LINQTRIM THAT YOU WISH TO CHANGE YOUR PAYMENT METHOD
-        INFORMATION.
       </p>
     </main>
   );

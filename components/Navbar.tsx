@@ -40,7 +40,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
   return (
     <div
       className={`transition-transform duration-300 ${showNavbar ? '' : 'hidden'} ${
-        isScrolled ? 'fixed top-0 left-0 right-0 z-50 bg-[#FAFAFA]/90 ease-in-out' : 'relative'
+        isScrolled ? 'fixed top-0 left-0 right-0 z-50 bg-[#FAFAFA]/90 dark:bg-[#111212]/90 ease-in-out' : 'relative'
       }`}
     >
       <main className="md:px-0 md:mx-auto md:container mx-4">

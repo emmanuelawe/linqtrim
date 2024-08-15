@@ -16,7 +16,7 @@ const HeroSection = async () => {
             <span className="italic text-[#2EB77A]">effortlessly</span>
             <br /> and stay in control
           </h1>
-          <p className="text-justify md:text-base text-sm">
+          <p className="md:text-justify text-center md:text-base text-xs">
             Ultimate URL Shortening Tool: Simplify link management, analysis,
             and branding. Features include deep links, QR codes, bio links,
             surveys, and more. Effortlessly start shortening and tracking your

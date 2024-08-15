@@ -1,10 +1,10 @@
 const PrivacyPolicy = () => {
   return (
     <main className="max-w-4xl mx-auto mt-20 md:mt-40 px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6 text-gray-900">
+      <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
         Linqtrim Privacy Policy
       </h1>
-      <p className="text-base text-gray-700 leading-relaxed mb-6 text-justify">
+      <p className="text-base text-gray-700 leading-relaxed mb-6 text-justify dark:text-white">
         This Privacy Policy outlines how we collect, use, and share personal
         data of people who use or are connected to our services, are interested
         in Bitly or its services, or to whom we wish to market our services.

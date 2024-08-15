@@ -42,18 +42,74 @@ const DashboardSkeleton = () => {
               <Skeleton className="w-32 h-10" />
             </div>
           </div>
+        </div>
 
-          <div className="mt-4 ">
-            <h3 className="font-bold text-xl text-[#2EB77A]">
-              <Skeleton className="w-24 h-6" />
-            </h3>
-            <ul className="flex flex-col gap-4 mt-2">
-              <Skeleton className="w-full h-20 bg-gray-50 p-4 rounded-xl shadow-sm" />
-              <Skeleton className="w-full h-20 bg-gray-50 p-4 rounded-xl shadow-sm" />
-              <Skeleton className="w-full h-20 bg-gray-50 p-4 rounded-xl shadow-sm" />
-            </ul>
+        <div className="bg-white rounded-xl p-6 mb-4">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="flex flex-col w-[50%]">
+              <Skeleton className="p-4  border-gray-300 rounded-xl bg-transparent mb-2" />
+              <div className="space-x-4">
+                <Skeleton className="w-32 h-10" />
+                <Skeleton className="w-24 h-10" />
+              </div>
+            </div>
+
+            <div className="flex flex-col md:flex-row md:items-center gap-4">
+              <Skeleton className="w-32 h-6" />
+              <Skeleton className="w-20 h-6" />
+              <div className="flex items-center gap-2">
+                <Skeleton className="w-20 h-20 rounded-xl" />
+                <Skeleton className="w-20 h-10" />
+              </div>
+              <Skeleton className="w-32 h-10" />
+            </div>
           </div>
         </div>
+
+        <div className="bg-white rounded-xl p-6 mb-4">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="flex flex-col w-[50%]">
+              <Skeleton className="p-4  border-gray-300 rounded-xl bg-transparent mb-2" />
+              <div className="space-x-4">
+                <Skeleton className="w-32 h-10" />
+                <Skeleton className="w-24 h-10" />
+              </div>
+            </div>
+
+            <div className="flex flex-col md:flex-row md:items-center gap-4">
+              <Skeleton className="w-32 h-6" />
+              <Skeleton className="w-20 h-6" />
+              <div className="flex items-center gap-2">
+                <Skeleton className="w-20 h-20 rounded-xl" />
+                <Skeleton className="w-20 h-10" />
+              </div>
+              <Skeleton className="w-32 h-10" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-xl p-6 mb-4">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="flex flex-col w-[50%]">
+              <Skeleton className="p-4  border-gray-300 rounded-xl bg-transparent mb-2" />
+              <div className="space-x-4">
+                <Skeleton className="w-32 h-10" />
+                <Skeleton className="w-24 h-10" />
+              </div>
+            </div>
+
+            <div className="flex flex-col md:flex-row md:items-center gap-4">
+              <Skeleton className="w-32 h-6" />
+              <Skeleton className="w-20 h-6" />
+              <div className="flex items-center gap-2">
+                <Skeleton className="w-20 h-20 rounded-xl" />
+                <Skeleton className="w-20 h-10" />
+              </div>
+              <Skeleton className="w-32 h-10" />
+            </div>
+          </div>
+        </div>
+
       </div>
     </main>
   );

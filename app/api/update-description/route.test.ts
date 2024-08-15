@@ -1,4 +1,4 @@
-import { POST } from "@/app/api/update-description/route";
+import { POST } from "@/app/(api)/update-description/route";
 import { createClient } from "@/utils/supabase/server";
 import { NextResponse } from "next/server";
 

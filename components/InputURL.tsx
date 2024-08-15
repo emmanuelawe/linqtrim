@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 import ShortenLoader from "./ShortenLoader";
 import { saveAs } from "file-saver";
 import { User } from "@supabase/supabase-js";
+import Link from "next/link";
 
 interface InputProps {
   user: User | null;
@@ -54,7 +55,7 @@ const InputURL: React.FC<InputProps> = ({user}) => {
       setShortUrl(data.shortUrl);
       setQrCodeUrl(data.qrCodeUrl);
     } else {
-      alert(`Error: ${data.error}`);
+      alert('URL already exists. Try a different URL.');
     }
   };
 
@@ -103,8 +104,13 @@ const InputURL: React.FC<InputProps> = ({user}) => {
       </form>
       <p className="self-center text-xs text-center md:text-base">
         By using our service you accept the{" "}
-        <span className="font-semibold text-[#2EB77A]">Terms of service</span>{" "}
-        and <span className="font-semibold text-[#2EB77A]">Privacy Policy</span>
+        <Link href='/tos'>
+        <span className="font-semibold text-[#2EB77A]">Terms of service</span>
+        </Link>
+        {" "} and {" "}
+        <Link href='/privacy'>
+        <span className="font-semibold text-[#2EB77A]">Privacy Policy</span>
+        </Link>
       </p>
      
       {shortUrl && (
@@ -113,7 +119,7 @@ const InputURL: React.FC<InputProps> = ({user}) => {
             <span className="font-bold text-xl text-[#2EB77A]">
               Shortened URL:
             </span>
-            <span className="font-medium bg-gray-50 p-4 rounded-xl">{shortUrl}</span>
+            <span className="font-medium bg-gray-50 p-4 dark:text-black rounded-xl">{shortUrl}</span>
           </div>
           {qrCodeUrl && (
             <div className="flex gap-4 items-center">

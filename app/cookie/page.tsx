@@ -2,11 +2,11 @@ const CookiePolicy = () => {
   return (
     <main className="flex flex-col mt-20 md:mt-40 items-center px-4 py-8 min-h-screen">
       <div className="max-w-4xl w-full p-6">
-        <h1 className="text-3xl font-semibold text-gray-900 mb-6">
+        <h1 className="text-3xl font-semibold text-gray-900 mb-6 dark:text-white">
           Linqtrim Cookie Policy
         </h1>
 
-        <p className="text-base text-gray-700 mb-4 text-justify">
+        <p className="text-base text-gray-700 mb-4 text-justify dark:text-white">
           Linqtrim Inc. (“Linqtrim”, “we” or “us”) uses cookies and similar
           technologies on our website or the services, features, content, or
           applications offered by Linqtrim through the Site (collectively with
@@ -19,7 +19,7 @@ const CookiePolicy = () => {
           Policy.
         </p>
 
-        <p className="text-base text-gray-700 mb-4 text-justify">
+        <p className="text-base text-gray-700 mb-4 text-justify dark:text-white">
           <strong>Identity and contract details of the data controller:</strong>{" "}
           The data controller responsible for processing of the personal data is
           Linqtrim Inc. If you have any questions or concerns regarding privacy
@@ -35,7 +35,7 @@ const CookiePolicy = () => {
           York, NY 10001-1101.
         </p>
 
-        <p className="text-base text-gray-700 mb-4 text-justify">
+        <p className="text-base text-gray-700 mb-4 text-justify dark:text-white">
           <strong>What cookies are:</strong> Cookies are pieces of text placed
           on your computer or mobile device through your web browser when you
           access a website. Your browser stores cookies in a manner associated
@@ -53,7 +53,7 @@ const CookiePolicy = () => {
           we use, please see our Cookie List.
         </p>
 
-        <p className="text-base text-gray-700 mb-4 text-justify">
+        <p className="text-base text-gray-700 mb-4 text-justify dark:text-white">
           <strong>How we use cookies:</strong> We use cookies and similar
           technologies to allow our website to work, understand our website
           traffic, and help us to analyze how and when you visit our Site and
@@ -64,7 +64,7 @@ const CookiePolicy = () => {
           categories of cookies or similar techniques.
         </p>
 
-        <p className="text-base text-gray-700 mb-4 text-justify">
+        <p className="text-base text-gray-700 mb-4 text-justify dark:text-white">
           <strong>Essential cookies:</strong> Essential cookies are necessary
           for our Site and Services to function properly and provide you with
           some of the features. The use of these cookies does not require your
@@ -75,7 +75,7 @@ const CookiePolicy = () => {
           described in our Cookie List.
         </p>
 
-        <p className="text-base text-gray-700 mb-4 text-justify">
+        <p className="text-base text-gray-700 mb-4 text-justify dark:text-white">
           <strong>Marketing cookies:</strong> These cookies are used to collect
           information about how you use our websites to be able to tailor
           advertising based on your interests and behavior on our website. These
@@ -88,7 +88,7 @@ const CookiePolicy = () => {
           expressed consent.
         </p>
 
-        <p className="text-base text-gray-700 mb-4 text-justify">
+        <p className="text-base text-gray-700 mb-4 text-justify dark:text-white">
           <strong>Performance cookies:</strong> Performance cookies collect data
           regarding how the Services are used, for example, which pages have
           been visited, which keywords have been used, and which links have been
@@ -104,7 +104,7 @@ const CookiePolicy = () => {
           manage your consents.
         </p>
 
-        <p className="text-base text-gray-700 mb-4 text-justify">
+        <p className="text-base text-gray-700 mb-4 text-justify dark:text-white">
           <strong>Cookies associated with Linqtrim Link:</strong> Linqtrim
           cookies also allow Linqtrim to track when you have clicked on a
           Linqtrim Link. Each click of a Linqtrim Link is tracked using a unique
@@ -119,7 +119,7 @@ const CookiePolicy = () => {
           Services, including to ensure their functionality and security.
         </p>
 
-        <p className="text-base text-gray-700 mb-4 text-justify">
+        <p className="text-base text-gray-700 mb-4 text-justify dark:text-white">
           <strong>Third-party cookies:</strong> Our third-party partners (such
           as Facebook and Google) may use cookies, web beacons, pixel tags, or
           similar technologies to collect or receive information from websites,
@@ -155,14 +155,14 @@ const CookiePolicy = () => {
           ).
         </p>
 
-        <p className="text-base text-gray-700 mb-4 text-justify">
+        <p className="text-base text-gray-700 mb-4 text-justify dark:text-white">
           <strong>Payment services:</strong> If you elect to purchase a paid
           account, then payment is processed using Stripe. Cookies are essential
           to this payment process and more details can be found in Stripe’s
           Cookie Policy.
         </p>
 
-        <p className="text-base text-gray-700 mb-4 text-justify">
+        <p className="text-base text-gray-700 mb-4 text-justify dark:text-white">
           <strong>Managing your cookie settings:</strong> When entering our
           website, you can choose through the cookie banner which cookies you
           want to enable in addition to essential cookies. You can withdraw your
@@ -193,14 +193,14 @@ const CookiePolicy = () => {
           .
         </p>
 
-        <p className="text-base text-gray-700 mb-4 text-justify">
+        <p className="text-base text-gray-700 mb-4 text-justify dark:text-white">
           <strong>Updates to this Cookie Policy:</strong> We may change this
           Cookie Policy from time to time. We will post any changes to this
           Cookie Policy on this page and will indicate at the top of the page
           when the Cookie Policy was last revised.
         </p>
 
-        <p className="text-base text-gray-700 mb-4 text-justify">
+        <p className="text-base text-gray-700 mb-4 text-justify dark:text-white">
           <strong>Contact us:</strong> If you have any questions about this
           Cookie Policy, please contact us at{" "}
           <a

@@ -1,3 +1,4 @@
+import { Facebook, Instagram, Twitter } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -59,10 +60,15 @@ const Footer = () => {
           </section>
         </div>
 
-        {/* COPYRIGHT SECTION */}
-        <div className="mt-20 pb-4 text-center text-xs md:text-base">
-          <p>© 2024 Chase Ntwk. All Rights Reserved.</p>
+        <div className="flex space-x-8 items-center justify-center md:mt-40 mt-20">
+          <Facebook />
+          <Twitter />
+          <Instagram />
         </div>
+      </div>
+      {/* COPYRIGHT SECTION */}
+      <div className="mt-10 py-10 text-center text-xs md:text-base bg-[#FAFAFA] dark:bg-[#111212] w-full text-black dark:text-white">
+        <p>© 2024 Chase Ntwk. All Rights Reserved.</p>
       </div>
     </footer>
   );

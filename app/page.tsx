@@ -10,7 +10,7 @@ export default async function Home() {
     data: { user },
   } = await supabase.auth.getUser();
   return (
-    <main className="flex flex-col gap-20 md:gap-40 w-full ">
+    <main className="flex flex-col gap-32 md:gap-60 w-full ">
       <HeroSection />
       <InputURL user={user} />
       <BriefDescription />

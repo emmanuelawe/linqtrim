@@ -14,9 +14,9 @@ const HeroSection = async () => {
       aria-label="Hero section"
       className="flex flex-col md:flex-row mt-20 md:mt-40 md:mx-auto md:container"
     >
-      <div className="flex items-center justify-between w-full gap-14">
+      <div className="flex items-center justify-between w-full gap-20">
         {/* LEFT */}
-        <section className="md:max-w-[42rem] w-full items-center md:items-start">
+        <section className="md:max-w-[40rem] w-full items-center md:items-start">
           <h1
             aria-label="Hero section heading"
             className="h1 py-4 text-center md:text-start"
@@ -30,14 +30,13 @@ const HeroSection = async () => {
             className="md:text-justify text-center md:text-base text-xs"
           >
             Ultimate URL Shortening Tool: Simplify link management, analysis,
-            and branding. Features include deep links, QR codes, bio links,
-            surveys, and more. Effortlessly start shortening and tracking your
-            links.
+            and branding. Features include short links, QR codes, and more.
+            Effortlessly start shortening and tracking your links.
           </p>
 
           <div
             aria-label="Action buttons"
-            className="mt-8 flex md:justify-between justify-start items-center gap-4"
+            className="mt-12 flex md:justify-between justify-start items-center gap-4"
           >
             {user ? (
               <div className="flex w-full">
@@ -54,7 +53,7 @@ const HeroSection = async () => {
                   href="/signup"
                   className="hbutton w-full w-1/1 md:w-1/2 text-center"
                 >
-                  <button>Sign up</button>
+                  <button>Get Started</button>
                 </Link>
                 <Link
                   href="/login"
@@ -73,14 +72,10 @@ const HeroSection = async () => {
           className="hidden md:flex md:w-1/2"
         >
           <div>
-            <AnimateGif src='https://www.icegif.com/wp-content/uploads/2023/09/icegif-509.gif' alt='Analytics' />
-            {/* <Image
-              src="/illustration.png"
-              alt="Illustration"
-              width={800}
-              height={800}
-              className="max-w-full h-auto"
-            /> */}
+            <AnimateGif
+              src="https://github.com/emmanuelawe/linqtrim/blob/main/public/dance.gif?raw=true"
+              alt="Analytics"
+            />
           </div>
         </section>
       </div>

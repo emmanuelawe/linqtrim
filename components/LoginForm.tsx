@@ -55,7 +55,10 @@ const LoginForm = () => {
       <p className="mt-2 text-gray-600 dark:text-gray-400">
         Enter your email and password
       </p>
-      <form onSubmit={handleSubmit(onSubmit)} className="w-full mt-6 space-y-6 items-center">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-full mt-6 space-y-6 items-center"
+      >
         <div>
           <label
             htmlFor="email"
